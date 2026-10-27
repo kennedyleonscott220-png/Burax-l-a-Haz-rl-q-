@@ -184,7 +184,33 @@ button{position:relative;overflow:hidden}
 .res>.card:first-of-type{animation:popin .6s cubic-bezier(.3,1.4,.5,1) both}
 #cfx{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
 #cfx i{position:absolute;top:30%;left:50%;width:9px;height:14px;border-radius:2px;animation:cfall 1.8s cubic-bezier(.15,.7,.3,1) forwards}
-</style></head><body><div id="aup" hidden><b>🎧 Listening</b><audio id="aue" controls preload="auto"></audio></div><div id="app"></div><div id="sr" class="sr" role="status" aria-live="polite"></div><nav id="tabs"><i class="ind"></i><button onclick="tab('home')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span></span></button><button onclick="tab('bur')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/></svg><span></span></button><button onclick="tab('blok')"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg><span></span></button><button onclick="tab('prac')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19z"/><path d="M14 7l3 3"/></svg><span></span></button><button onclick="tab('stat')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6"/></svg><span></span></button><button onclick="tab('set')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span></span></button></nav><script>
+</style></head><body><style>
+#bsplash{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;flex-direction:column;background:radial-gradient(circle at 50% 38%,#3556f0 0,#2540d9 38%,#16248f 100%);color:#fff;font-family:system-ui,-apple-system,Roboto,Arial,sans-serif;text-align:center;transition:opacity .45s ease,transform .45s ease;padding:env(safe-area-inset-top,0px) 24px env(safe-area-inset-bottom,0px)}
+#bsplash.out{opacity:0;transform:scale(1.06);pointer-events:none}
+#bsplash .bs-cap{width:190px;height:190px;animation:bsDrop .9s cubic-bezier(.2,1.35,.4,1) both}
+#bsplash .bs-tas{transform-origin:412px 247px;animation:bsSwing 1.3s ease-in-out .9s infinite alternate}
+#bsplash .bs-t{margin-top:14px;font-size:27px;font-weight:800;letter-spacing:.2px;animation:bsUp .6s ease .55s both}
+#bsplash .bs-s{margin-top:6px;font-size:14px;opacity:.85;animation:bsUp .6s ease .75s both}
+#bsplash .bs-bar{margin-top:30px;width:150px;height:5px;border-radius:5px;background:rgba(255,255,255,.22);overflow:hidden;animation:bsUp .5s ease .9s both}
+#bsplash .bs-bar i{display:block;height:100%;width:0;border-radius:5px;background:#ffc83d;animation:bsBar 1.5s cubic-bezier(.4,0,.2,1) .9s forwards}
+#bsplash .bs-glow{position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,61,.28),transparent 68%);animation:bsGlow 2.4s ease-in-out infinite alternate;pointer-events:none;transform:translateY(-70px)}
+@keyframes bsDrop{0%{opacity:0;transform:translateY(-70px) scale(.55) rotate(-10deg)}60%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes bsSwing{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
+@keyframes bsUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes bsBar{to{width:100%}}
+@keyframes bsGlow{from{opacity:.5;transform:translateY(-70px) scale(.9)}to{opacity:1;transform:translateY(-70px) scale(1.12)}}
+</style>
+<div id="bsplash" aria-hidden="true"><div class="bs-glow"></div><svg class="bs-cap" viewBox="0 0 512 512"><polygon points="148,262 256,314 364,262 364,338 256,392 148,338" fill="#cdd6f5"/><polygon points="148,262 256,314 364,262 364,300 256,352 148,300" fill="#e1e7fa"/><polygon points="256,126 450,208 256,290 62,208" fill="#fff"/><g class="bs-tas"><path d="M256 208 L412 247 L412 330" stroke="#ffc83d" stroke-width="9" fill="none"/><circle cx="412" cy="337" r="15" fill="#ffc83d"/><polygon points="404,345 420,345 426,388 398,388" fill="#ffc83d"/></g><circle cx="256" cy="208" r="12" fill="#ffc83d"/></svg><div class="bs-t">Buraxılışa hazırlıq</div><div class="bs-s">Buraxılış və blok imtahanları</div><div class="bs-bar"><i></i></div></div>
+<script>(function(){var e=document.getElementById('bsplash');if(!e)return;var skip=false;try{var st=JSON.parse(localStorage.getItem('set')||'{}');if(st&&st.anim===false)skip=true;if(sessionStorage.getItem('bsSeen'))skip=true}catch(x){}
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)skip=true;
+if(skip){e.remove();return}
+try{sessionStorage.setItem('bsSeen','1')}catch(x){}
+var done=false,t0=Date.now();function out(){if(done)return;done=true;e.classList.add('out');setTimeout(function(){e.remove()},500)}
+e.addEventListener('click',out);
+function ready(){setTimeout(out,Math.max(0,2400-(Date.now()-t0)))}
+if(document.readyState=='complete')ready();else addEventListener('load',ready);
+setTimeout(out,6000)})();</script>
+<div id="aup" hidden><b>🎧 Listening</b><audio id="aue" controls preload="auto"></audio></div><div id="app"></div><div id="sr" class="sr" role="status" aria-live="polite"></div><nav id="tabs"><i class="ind"></i><button onclick="tab('home')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span></span></button><button onclick="tab('bur')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/></svg><span></span></button><button onclick="tab('blok')"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg><span></span></button><button onclick="tab('prac')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19z"/><path d="M14 7l3 3"/></svg><span></span></button><button onclick="tab('stat')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6"/></svg><span></span></button><button onclick="tab('set')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span></span></button></nav><script>
 /* ---- UX: Bu gün kartı, nəticə üçün növbəti addım, imtahan təlimatı ---- */
 function todayCard(){let Wr=LS.g('wrong',[]),G=LS.g('goal',{d:{},g:30}),td=new Date().toISOString().slice(0,10),dn=G.d[td]||0,left=Math.max(0,G.g-dn),
  hasW=Object.values(LS.g('ms',{})).some(v=>v[1]>=3),b=[];
@@ -1043,7 +1069,7 @@ new MutationObserver(countUp).observe(document.getElementById('app'),{childList:
 }catch(e){console.warn(e)}})();
 
 /* PWA */
-var APP_VER='V23';
+var APP_VER='V23.1';
 try{if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0){
 const ru=()=>document.documentElement.lang=='ru',T=(a,r)=>ru()?r:a;
 let had=!!navigator.serviceWorker.controller,shown=false;
