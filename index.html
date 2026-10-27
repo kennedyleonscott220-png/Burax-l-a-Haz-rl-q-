@@ -354,7 +354,7 @@ function home(){clearInterval(tm);
  <div class="card"><b>${L('Animasiyalar','Анимации')}</b>${swR('anim',L('Animasiyaları göstər','Показывать анимации'),1)}<div class="fld"><span>${L('Sürət','Скорость')}</span>${sgB('spd',[['slow',L('Yavaş','Медленно')],['normal',L('Normal','Обычно')],['fast',L('Sürətli','Быстро')]],SET.spd||'normal')}</div></div>
  <div class="card"><b>${L('İmtahan','Экзамен')}</b><div class="row"><span>${L('Variant','Вариант')}</span><select onchange="V=this.value">${['A','B','C','D','T'].map(v=>`<option value="${v}" ${v==V?'selected':''}>${v=='T'?L('Təsadüfi','Случайный'):v}</option>`).join('')}</select></div><div class="row"><span>${L('Sektor','Сектор')}</span><select onchange="LG=this.value;SET.lg=LG;svS();document.documentElement.lang=LG;home()"><option value="az" ${LG=='az'?'selected':''}>Azərbaycan</option><option value="ru" ${LG=='ru'?'selected':''}>Rus</option></select></div>${swR('hideT',L('Taymeri gizlət (son 10 dəqiqədə görünür)','Скрыть таймер (виден в последние 10 минут)'))}${swR('vib',L('Vibrasiya','Вибрация'),1)}</div>
  <div class="card"><b>${L('Məşq','Практика')}</b>${swR('inst',L('Cavabı dərhal göstər','Показывать ответ сразу'))}<div class="row"><span>${L('Gündəlik hədəf','Дневная цель')}</span><select onchange="let g=LS.g('goal',{d:{},ex:'',g:30});g.g=+this.value;LS.s('goal',g)">${[10,20,30,50,100].map(n=>`<option value="${n}" ${GL.g==n?'selected':''}>${n} ${L('sual','вопр.')}</option>`).join('')}</select></div><div class="fld"><span>${L('Mini-testdə sual sayı','Вопросов в мини-тесте')}</span>${sgB('mini',[[5,'5'],[10,'10'],[20,'20']],N)}</div><div class="fld"><span>${L('Fənlər (məşq üçün)','Предметы (для практики)')}</span><div class="chips2">${subjAll().map(s=>`<button class="${!SET.subj||SET.subj.includes(s)?'on':''}" data-s="${s}" onclick="ch(this)">${s}</button>`).join('')}</div></div></div>
- <div class="card"><b>${L('Tətbiq','Приложение')}</b><div class="row"><span>${L('Versiya','Версия')}</span><b>${typeof APP_VER!='undefined'?APP_VER:''}</b></div><button class="p" onclick="chkUpd()">${L('Yeniləməni yoxla','Проверить обновление')}</button><p class="m" id="updMsg"></p></div>\n <div class="card"><b>Ehtiyat nüsxə</b><p class="m">Bütün gedişat (nəticələr, səhvlər, təkrar sistemi, nailiyyətlər, ayarlar) yalnız bu brauzerdə saxlanır. Vaxtaşırı fayla yüklə; yeni cihazda və ya brauzer təmizləndikdən sonra fayldan bərpa et.</p><button class="p" onclick="bkF()">Fayla yüklə (.json)</button><label class="m" style="display:inline-block"><input type="file" accept=".json,application/json" style="display:none" onchange="bkL(this)"><span style="display:inline-block;font-weight:600;color:var(--t);background:var(--c);border:1px solid var(--b);border-radius:14px;padding:11px 16px;margin:3px;cursor:pointer">Fayldan bərpa et</span></label><p class="m" id="bkm" aria-live="polite"></p><details><summary class="m">Mətn kimi ixrac / idxal</summary><textarea id="bk" rows="2"></textarea><button onclick="bkE()">İxrac</button><button onclick="bkI()">İdxal</button></details></div>`};
+ <div class="card"><b>${L('Tətbiq','Приложение')}</b><div class="row"><span>${L('Versiya','Версия')}</span><b>${typeof APP_VER!='undefined'?APP_VER:''}</b></div><button class="p" onclick="chkUpd()">${L('Yeniləməni yoxla','Проверить обновление')}</button><button onclick="showNews(1)">${L('Yeniliklər','Что нового')}</button><p class="m" id="updMsg"></p></div>\n <div class="card"><b>Ehtiyat nüsxə</b><p class="m">Bütün gedişat (nəticələr, səhvlər, təkrar sistemi, nailiyyətlər, ayarlar) yalnız bu brauzerdə saxlanır. Vaxtaşırı fayla yüklə; yeni cihazda və ya brauzer təmizləndikdən sonra fayldan bərpa et.</p><button class="p" onclick="bkF()">Fayla yüklə (.json)</button><label class="m" style="display:inline-block"><input type="file" accept=".json,application/json" style="display:none" onchange="bkL(this)"><span style="display:inline-block;font-weight:600;color:var(--t);background:var(--c);border:1px solid var(--b);border-radius:14px;padding:11px 16px;margin:3px;cursor:pointer">Fayldan bərpa et</span></label><p class="m" id="bkm" aria-live="polite"></p><details><summary class="m">Mətn kimi ixrac / idxal</summary><textarea id="bk" rows="2"></textarea><button onclick="bkE()">İxrac</button><button onclick="bkI()">İdxal</button></details></div>`};
  A.innerHTML=P[TAB];if($('#ms'))tps()}
 function setTheme(n){document.documentElement.dataset.theme=n;LS.s('th',n);document.querySelectorAll('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.t==n))}
 const TABS=['home','bur','blok','prac','stat','set'];
@@ -1069,7 +1069,7 @@ new MutationObserver(countUp).observe(document.getElementById('app'),{childList:
 }catch(e){console.warn(e)}})();
 
 /* PWA */
-var APP_VER='V23.4';
+var APP_VER='V23.6';
 try{if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0){
 const ru=()=>document.documentElement.lang=='ru',T=(a,r)=>ru()?r:a;
 let had=!!navigator.serviceWorker.controller,shown=false;
@@ -1099,6 +1099,26 @@ window.chkUpd=async function(){const t=document.getElementById('updMsg'),say=m=>
 }
 
 if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{})}catch(e){}
+
+/* ===== Yeniliklər (hər versiyada yalnız 1 dəfə avtomatik görünür) ===== */
+try{
+const NEWS={'V23.6':[['Bəzi xətalar düzəldildi','Исправлены некоторые ошибки']]};
+const nl=()=>document.documentElement.lang=='ru';
+window.showNews=function(force){try{
+ if(document.getElementById('newsbox'))return;
+ const a=document.getElementById('app');
+ if(!force&&a&&a.classList.contains('exam')){setTimeout(()=>window.showNews(),5000);return}
+ if(!force){try{localStorage.setItem('newsSeen',APP_VER)}catch(e){}}
+ const it=(NEWS[APP_VER]||[]).map(x=>'<li style="margin:6px 0">'+(nl()?x[1]:x[0])+'</li>').join('');
+ const ov=document.createElement('div');ov.id='newsbox';
+ ov.style.cssText='position:fixed;left:0;right:0;top:0;bottom:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.55);padding:16px';
+ ov.innerHTML='<div role="dialog" aria-modal="true" style="background:var(--c);color:var(--t);border:1px solid var(--p);border-radius:18px;padding:18px;max-width:420px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.4);max-height:80vh;overflow:auto"><h2 style="margin:0 0 2px;font-size:20px">🆕 '+(nl()?'Что нового':'Yeniliklər')+'</h2><p class="m" style="margin:0 0 8px">'+APP_VER+'</p><ul style="margin:0;padding-left:20px">'+it+'</ul><button class="p" style="margin-top:14px;width:100%">'+(nl()?'Понятно':'Oldu')+'</button></div>';
+ const close=()=>ov.remove();
+ ov.querySelector('button').onclick=close;
+ ov.addEventListener('click',e=>{if(e.target===ov)close()});
+ document.body.appendChild(ov)}catch(e){console.warn(e)}};
+addEventListener('load',()=>setTimeout(()=>{try{if(localStorage.getItem('newsSeen')!==APP_VER)window.showNews()}catch(e){}},900));
+}catch(e){}
 
 /* Ana səhifənin sadələşdirilməsi */
 try{
