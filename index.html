@@ -1069,17 +1069,19 @@ new MutationObserver(countUp).observe(document.getElementById('app'),{childList:
 }catch(e){console.warn(e)}})();
 
 /* PWA */
-var APP_VER='V23.7';
+var APP_VER='V23.8';
 try{if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0){
 const ru=()=>document.documentElement.lang=='ru',T=(a,r)=>ru()?r:a;
-let had=!!navigator.serviceWorker.controller,shown=false;
-const st=document.createElement('style');st.textContent='#updbar{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 10px);transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px);background:var(--c);color:var(--t);border:1px solid var(--p);border-radius:14px;padding:8px 10px 8px 14px;box-shadow:0 6px 24px rgba(0,0,0,.25);font-size:14px}#updbar button{padding:6px 12px;border-radius:10px;font-size:14px}#updbar .x{background:none;border:0;color:var(--m);padding:4px 8px}';document.head.appendChild(st);
+let had=!!navigator.serviceWorker.controller,shown=false,usz=null;
+async function updSize(){if(usz!==null)return usz;try{const r=await fetch('index.html',{method:'HEAD',cache:'no-store'}),n=+r.headers.get('content-length');usz=n>0?(n>=1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB'):''}catch(e){usz=''}return usz}
+const st=document.createElement('style');st.textContent='#updbar{position:fixed;left:12px;right:12px;margin:0 auto;width:max-content;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:9999;display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px);background:var(--c);color:var(--t);border:1px solid var(--p);border-radius:14px;padding:8px 10px 8px 14px;box-shadow:0 6px 24px rgba(0,0,0,.25);font-size:14px}#updbar button{padding:6px 12px;border-radius:10px;font-size:14px;white-space:nowrap;flex:none}#updbar span{min-width:0}#updbar .x{background:none;border:0;color:var(--m);padding:4px 8px}';document.head.appendChild(st);
 function showBar(){if(shown)return;
  // imtahan zamanı yarımçıq qoyma: imtahan bitənə qədər gözlə
  const a=document.getElementById('app');if(a&&a.classList.contains('exam')){setTimeout(showBar,5000);return}
  shown=true;const d=document.createElement('div');d.id='updbar';d.setAttribute('role','status');
  d.innerHTML='<span>'+T('Yeni versiya hazırdır','Доступна новая версия')+'</span><button class="p">'+T('Yenilə','Обновить')+'</button><button class="x" aria-label="x">✕</button>';
  d.querySelector('.p').onclick=()=>location.reload();
+ updSize().then(z=>{if(z){const sp=d.querySelector('span');if(sp)sp.textContent+=' · '+z}});
  d.querySelector('.x').onclick=()=>{d.remove();shown=false;sessionStorage.setItem('updDismiss','1')};
  document.body.appendChild(d)}
 navigator.serviceWorker.addEventListener('controllerchange',async()=>{const was=had;had=true;if(!was||sessionStorage.getItem('updDismiss'))return;
@@ -1093,9 +1095,9 @@ window.chkUpd=async function(){const t=document.getElementById('updMsg'),say=m=>
  if(!navigator.serviceWorker.controller){say(T('Yeniləmə yalnız internet ünvanından açılan tətbiqdə işləyir.','Обновление работает только в приложении, открытом по интернет-адресу.'));return}
  say(T('Yoxlanılır...','Проверка...'));
  try{const r=await navigator.serviceWorker.getRegistration();await r.update();
-  if(r.installing||r.waiting){sessionStorage.removeItem('updDismiss');say(T('Yeni versiya yüklənir...','Загружается новая версия...'));return}
+  if(r.installing||r.waiting){sessionStorage.removeItem('updDismiss');const z=await updSize();say(T('Yeni versiya yüklənir'+(z?' ('+z+')':'')+'...','Загружается новая версия'+(z?' ('+z+')':'')+'...'));return}
   let sv=null;try{const tx=await (await fetch('sw.js',{cache:'no-store'})).text(),m=tx.match(/buraxilis-v(\d+)-(\d+)/);if(m)sv='V'+m[1]+'.'+m[2]}catch(e){}
-  if(sv&&sv!==APP_VER){sessionStorage.removeItem('updDismiss');say(T('Yeni versiya var ('+sv+'). Yuxarıdakı «Yenilə» düyməsinə bas.','Есть новая версия ('+sv+'). Нажми «Обновить» вверху.'));showBar();return}
+  if(sv&&sv!==APP_VER){sessionStorage.removeItem('updDismiss');const z=await updSize();say(T('Yeni versiya var ('+sv+(z?', '+z:'')+'). Yuxarıdakı «Yenilə» düyməsinə bas.','Есть новая версия ('+sv+(z?', '+z:'')+'). Нажми «Обновить» вверху.'));showBar();return}
   {const ub=document.getElementById('updbar');if(ub){ub.remove();shown=false}}
   say(T('Ən son versiyadasan ('+APP_VER+').','У тебя последняя версия ('+APP_VER+').'))}
  catch(e){say(T('Yoxlamaq alınmadı, internet yoxdur.','Не удалось проверить, нет интернета.'))}};
@@ -1105,7 +1107,7 @@ if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catc
 
 /* ===== Yeniliklər (hər versiyada yalnız 1 dəfə avtomatik görünür) ===== */
 try{
-const NEWS={'V23.7':[['Yeniləmə bildirişindəki xəta düzəldildi','Исправлена ошибка в уведомлении об обновлении'],['Bəzi xətalar düzəldildi','Исправлены некоторые ошибки']],'V23.6':[['Bəzi xətalar düzəldildi','Исправлены некоторые ошибки']]};
+const NEWS={'V23.8':[['Yeniləmə bildirişi düzəldildi və yeniləmənin ölçüsü göstərilir','Исправлено уведомление об обновлении, теперь показывается размер обновления']],'V23.7':[['Yeniləmə bildirişindəki xəta düzəldildi','Исправлена ошибка в уведомлении об обновлении'],['Bəzi xətalar düzəldildi','Исправлены некоторые ошибки']],'V23.6':[['Bəzi xətalar düzəldildi','Исправлены некоторые ошибки']]};
 const nl=()=>document.documentElement.lang=='ru';
 window.showNews=function(force){try{
  if(document.getElementById('newsbox'))return;
