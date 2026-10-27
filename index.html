@@ -1069,7 +1069,7 @@ new MutationObserver(countUp).observe(document.getElementById('app'),{childList:
 }catch(e){console.warn(e)}})();
 
 /* PWA */
-var APP_VER='V23.6';
+var APP_VER='V23.7';
 try{if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0){
 const ru=()=>document.documentElement.lang=='ru',T=(a,r)=>ru()?r:a;
 let had=!!navigator.serviceWorker.controller,shown=false;
@@ -1082,7 +1082,9 @@ function showBar(){if(shown)return;
  d.querySelector('.p').onclick=()=>location.reload();
  d.querySelector('.x').onclick=()=>{d.remove();shown=false;sessionStorage.setItem('updDismiss','1')};
  document.body.appendChild(d)}
-navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had&&!sessionStorage.getItem('updDismiss'))showBar();had=true});
+navigator.serviceWorker.addEventListener('controllerchange',async()=>{const was=had;had=true;if(!was||sessionStorage.getItem('updDismiss'))return;
+ try{const tx=await (await fetch('sw.js',{cache:'no-store'})).text(),m=tx.match(/buraxilis-v(\d+)-(\d+)/);if(m&&('V'+m[1]+'.'+m[2])===APP_VER)return}catch(e){}
+ showBar()});
 addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').then(r=>{
  const chk=()=>r.update().catch(()=>{});
  setInterval(chk,30*60*1000);
@@ -1094,6 +1096,7 @@ window.chkUpd=async function(){const t=document.getElementById('updMsg'),say=m=>
   if(r.installing||r.waiting){sessionStorage.removeItem('updDismiss');say(T('Yeni versiya yüklənir...','Загружается новая версия...'));return}
   let sv=null;try{const tx=await (await fetch('sw.js',{cache:'no-store'})).text(),m=tx.match(/buraxilis-v(\d+)-(\d+)/);if(m)sv='V'+m[1]+'.'+m[2]}catch(e){}
   if(sv&&sv!==APP_VER){sessionStorage.removeItem('updDismiss');say(T('Yeni versiya var ('+sv+'). Yuxarıdakı «Yenilə» düyməsinə bas.','Есть новая версия ('+sv+'). Нажми «Обновить» вверху.'));showBar();return}
+  {const ub=document.getElementById('updbar');if(ub){ub.remove();shown=false}}
   say(T('Ən son versiyadasan ('+APP_VER+').','У тебя последняя версия ('+APP_VER+').'))}
  catch(e){say(T('Yoxlamaq alınmadı, internet yoxdur.','Не удалось проверить, нет интернета.'))}};
 }
@@ -1102,7 +1105,7 @@ if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catc
 
 /* ===== Yeniliklər (hər versiyada yalnız 1 dəfə avtomatik görünür) ===== */
 try{
-const NEWS={'V23.6':[['Bəzi xətalar düzəldildi','Исправлены некоторые ошибки']]};
+const NEWS={'V23.7':[['Yeniləmə bildirişindəki xəta düzəldildi','Исправлена ошибка в уведомлении об обновлении'],['Bəzi xətalar düzəldildi','Исправлены некоторые ошибки']],'V23.6':[['Bəzi xətalar düzəldildi','Исправлены некоторые ошибки']]};
 const nl=()=>document.documentElement.lang=='ru';
 window.showNews=function(force){try{
  if(document.getElementById('newsbox'))return;
