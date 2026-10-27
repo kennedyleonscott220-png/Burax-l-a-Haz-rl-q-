@@ -1092,6 +1092,8 @@ window.chkUpd=async function(){const t=document.getElementById('updMsg'),say=m=>
  say(T('Yoxlanılır...','Проверка...'));
  try{const r=await navigator.serviceWorker.getRegistration();await r.update();
   if(r.installing||r.waiting){sessionStorage.removeItem('updDismiss');say(T('Yeni versiya yüklənir...','Загружается новая версия...'));return}
+  let sv=null;try{const tx=await (await fetch('sw.js',{cache:'no-store'})).text(),m=tx.match(/buraxilis-v(\d+)-(\d+)/);if(m)sv='V'+m[1]+'.'+m[2]}catch(e){}
+  if(sv&&sv!==APP_VER){sessionStorage.removeItem('updDismiss');say(T('Yeni versiya var ('+sv+'). Yuxarıdakı «Yenilə» düyməsinə bas.','Есть новая версия ('+sv+'). Нажми «Обновить» вверху.'));showBar();return}
   say(T('Ən son versiyadasan ('+APP_VER+').','У тебя последняя версия ('+APP_VER+').'))}
  catch(e){say(T('Yoxlamaq alınmadı, internet yoxdur.','Не удалось проверить, нет интернета.'))}};
 }
