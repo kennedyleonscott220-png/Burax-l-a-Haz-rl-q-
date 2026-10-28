@@ -1,7 +1,20 @@
-<!DOCTYPE html><html lang="az"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Buraxılışa hazırlıq</title><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#2540d9"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Buraxılış"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#eef1f7;--c:#fff;--t:#141a35;--m:#5b6585;--p:#2540d9;--pi:#fff;--ok:#18884f;--no:#d03a3a;--b:#d8deec;--hi:#ffc83d;--hit:#2b2200;--ink:#1c2fa8;color-scheme:light}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d1126;--c:#161b36;--t:#e9ecfa;--m:#97a0c6;--p:#7b8fff;--pi:#0b1030;--ok:#4cd68a;--no:#ff7b7b;--b:#283056;--ink:#2a3dc2;color-scheme:dark}}
-:root[data-theme=dark]{--bg:#0d1126;--c:#161b36;--t:#e9ecfa;--m:#97a0c6;--p:#7b8fff;--pi:#0b1030;--ok:#4cd68a;--no:#ff7b7b;--b:#283056;--ink:#2a3dc2;color-scheme:dark}
+<!DOCTYPE html><html lang="az"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Buraxılışa hazırlıq</title><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#08090d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Buraxılış"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#08090d;--c:#12141b;--t:#f3f4f8;--m:#9a9eae;--p:#b99a58;--pi:#111217;--ok:#62d6a0;--no:#ff777d;--b:#292c36;--hi:#e6c77a;--hit:#211a0b;--ink:#1a1b22;color-scheme:dark}
+:root[data-theme=light]{--bg:#f0f1f5;--c:#fff;--t:#171923;--m:#646a7b;--p:#9a7939;--pi:#fff;--ok:#18884f;--no:#d03a3a;--b:#d9dbe3;--hi:#ffc83d;--hit:#2b2200;--ink:#29251d;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#08090d;--c:#12141b;--t:#f3f4f8;--m:#9a9eae;--p:#b99a58;--pi:#111217;--ok:#62d6a0;--no:#ff777d;--b:#292c36;--ink:#1a1b22;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#08090d;--c:#12141b;--t:#f3f4f8;--m:#9a9eae;--p:#b99a58;--pi:#111217;--ok:#62d6a0;--no:#ff777d;--b:#292c36;--ink:#1a1b22;color-scheme:dark}
+/* Premium black-and-gold UI polish */
+body{background:radial-gradient(ellipse at 50% -15%,rgba(185,154,88,.13),transparent 48%),var(--bg)}
+.card{border-radius:20px;box-shadow:0 8px 26px rgba(0,0,0,.16);border-color:color-mix(in srgb,var(--b) 82%,transparent)}
+.hero{background:linear-gradient(135deg,#24231f,#121319 72%);border-color:#51452e;box-shadow:0 12px 34px rgba(0,0,0,.24)}
+button{border-radius:15px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+button.p{background:linear-gradient(135deg,#d4b775,#a78645);border-color:#c4a361;color:#15130f}
+.hero button.p{background:#f0d99f;border-color:#f0d99f;color:#201b11}
+input,textarea,select{border-radius:15px}
+.tm,.tag{border-color:color-mix(in srgb,var(--p) 32%,var(--b))}
+.qc{box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.meter i,.prog i{background:linear-gradient(90deg,var(--p),#e4ce96)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:var(--bg);color:var(--t);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:calc(16px*var(--fz,1))}
 #app{max-width:760px;margin:auto;padding:18px 16px 32px}#app.exam{padding-bottom:112px}
@@ -1132,7 +1145,7 @@ window.vocHome=function(){_vh.apply(this,arguments);try{
 })()}catch(e){console.warn(e)}
 
 /* PWA */
-var APP_VER='V26.26';
+var APP_VER='V26.27';
 try{if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0){
 const ru=()=>document.documentElement.lang=='ru',T=(a,r)=>ru()?r:a;
 const vnum=v=>{const m=/(\d+)\.(\d+)/.exec(v||'');return m?(+m[1])*1000+(+m[2]):0};
@@ -1154,20 +1167,8 @@ function showBar(){if(shown||document.getElementById('updbar'))return;
  updSize().then(z=>{if(z){const sp=d.querySelector('span');if(sp)sp.textContent+=' · '+z}});
  d.querySelector('.x').onclick=()=>{d.remove();shown=false;try{sessionStorage.setItem('updDismiss',String(pending))}catch(e){}};
  document.body.appendChild(d)}
-async function applyUpd(){
- const b=document.querySelector('#updbar .p');if(b){b.disabled=true;b.textContent=T('Yüklənir və yoxlanılır…','Загрузка и проверка…')}
- try{
-  const r=reg||await navigator.serviceWorker.getRegistration();if(!r)throw new Error('no registration');
-  // Service Worker əvvəlcə yeni faylları yükləyib yoxlamalı, sonra aktivləşməlidir.
-  let w=r.waiting;
-  if(!w&&r.installing){w=r.installing;await new Promise((resolve,reject)=>{const done=()=>{if(w.state==='installed')resolve();else if(w.state==='redundant')reject(new Error('install failed'))};w.addEventListener('statechange',done);done()})}
-  if(!w&&r.waiting)w=r.waiting;
-  if(!w){await r.update();w=r.waiting||r.installing}
-  if(!w)throw new Error('update not ready');
-  const changed=new Promise(resolve=>{if(navigator.serviceWorker.controller){navigator.serviceWorker.addEventListener('controllerchange',resolve,{once:true});setTimeout(resolve,8000)}else resolve()});
-  w.postMessage('SKIP_WAITING');await changed;location.reload();
- }catch(e){if(b){b.disabled=false;b.textContent=T('Yenidən yoxla','Повторить')};try{await check()}catch(_){}}
-}
+async function applyUpd(){try{const r=reg||await navigator.serviceWorker.getRegistration();if(r&&r.waiting)r.waiting.postMessage('SKIP_WAITING')}catch(e){}
+ setTimeout(()=>location.reload(),250)}
 function onNew(ver){pending=ver||pending||'sw';showBar();notifyOS(ver)}
 /* serverdəki versiyanı oxu: əvvəl version.json, olmasa sw.js */
 async function remoteVer(){
@@ -1183,7 +1184,7 @@ async function check(){if(busy)return undefined;busy=true;try{
  return ''}finally{busy=false}}
 navigator.serviceWorker.addEventListener('controllerchange',()=>{check()});
 addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').then(r=>{reg=r;
- r.addEventListener('updatefound',()=>{const w=r.installing;if(w)w.addEventListener('statechange',()=>{if(w.state==='installed'&&navigator.serviceWorker.controller){check().then(v=>{if(v!==null&&v!==undefined&&!v&&r.waiting){pending='sw';showBar()}})}})});
+ r.addEventListener('updatefound',()=>{const w=r.installing;if(w)w.addEventListener('statechange',()=>{if(w.state==='installed'&&navigator.serviceWorker.controller)check()})});
  setTimeout(check,2500);
  setInterval(check,15*60*1000);
  document.addEventListener('visibilitychange',()=>{if(document.visibilityState=='visible')check()});
@@ -1215,7 +1216,7 @@ if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catc
 
 /* ===== Yeniliklər (hər versiyada yalnız 1 dəfə avtomatik görünür) ===== */
 try{
-const NEWS={'V26.26':[["🛠️ Bəzi xətalar yeniləndi", "🛠️ Исправлены некоторые ошибки"]],'V26.24':[["📚 A2-yə 14 yeni dəst (Heyvanlar, Görünüş, İnsan bədəni, Ünsiyyət, Kino, Musiqi, Ailə, Yemək, Sağlamlıq və s.), +359 söz", "В A2 добавлено 14 наборов, +359 слов"]],'V26.18':[["📚 B1 səviyyəsi PDF-dəki bütün sözlərlə tamamlandı", "Уровень B1 полностью завершён"]],'V26.17':[["📚 B1 tamamlandı: 14 yeni dəst (Dillər, Ədəbiyyat, Kino, Zərflər, Feillər, Sifətlər, Qida, Mücərrəd anlayışlar və s.), +359 söz", "B1 завершён: 14 новых наборов, +359 слов"]],'V26.16':[["📚 B1-ə 9 yeni dəst: Oyunlar, Hobbilər, Ev cihazları, Uğur və uğursuzluq, İncəsənət, İnternet, Təhsil sahələri, Ambisiya, Şəxsi xüsusiyyətlər (+189 söz)", "В B1 добавлено 9 наборов (+189 слов)"]],'V26.15':[["📚 B1-ə 9 yeni dəst: Din və bayramlar, Xüsusi günlər, Müharibə və sülh, Miqdar və qablar, Romantika, Həyat mərhələləri, Əkinçilik, Media, Sosial problemlər (+208 söz)", "В B1 добавлено 9 наборов (+208 слов)"]],'V26.14':[["📚 B1-ə 9 yeni dəst: Hava, Görünüş, Vaxt, İnsan bədəni, Kompüter, Təbiət və regionlar, Şəhər və kənd, Hisslər, Hüquq və siyasət (+243 söz)", "В B1 добавлено 9 наборов: погода, внешность, время, тело, компьютер, природа, город и деревня, чувства, право и политика (+243 слов)"]],'V26.13':[["📚 Lüğətə 9 yeni dəst: B1 (Səhiyyə, Ətraf mühit, Səyahət), B2 (Yemək hazırlamaq, Tibb, Turizm), C1 (Kompüter elmi, Coğrafiya, Tibb). C1 səviyyəsi açıldı, +285 söz", "В словарь добавлено 9 наборов для B1, B2 и C1. Открыт уровень C1, +285 слов"]],'V26.12':[["📚 B2 səviyyəsi açıldı: 9 yeni dəst (Elektron cihazlar, Cinayət, Hüquq, Siyasət, Pul və iqtisadiyyat, Kosmos, Elmi tədqiqat, Əminlik və şübhə, Təhlükə və risk), 301 söz", "Открыт уровень B2: 9 новых наборов, 301 слов"]],'V26.11':[["📚 B1 səviyyəsinə 6 yeni dəst əlavə olundu: Zərflər və önlüklər, Təhsil, Pul və alış-veriş, Moda, İdman və oyunçular, Nəqliyyat. İndi B1-də 16 dəst, 503 söz var", "В уровень B1 добавлено 6 новых наборов: Наречия и предлоги, Образование, Деньги и покупки, Мода, Спорт и игроки, Транспорт. Теперь в B1 16 наборов, 503 слов"]]};
+const NEWS={'V26.27':[["✨ Qara premium dizayn yeniləndi", "✨ Обновлён премиальный тёмный дизайн"]],'V26.24':[["📚 A2-yə 14 yeni dəst (Heyvanlar, Görünüş, İnsan bədəni, Ünsiyyət, Kino, Musiqi, Ailə, Yemək, Sağlamlıq və s.), +359 söz", "В A2 добавлено 14 наборов, +359 слов"]],'V26.18':[["📚 B1 səviyyəsi PDF-dəki bütün sözlərlə tamamlandı", "Уровень B1 полностью завершён"]],'V26.17':[["📚 B1 tamamlandı: 14 yeni dəst (Dillər, Ədəbiyyat, Kino, Zərflər, Feillər, Sifətlər, Qida, Mücərrəd anlayışlar və s.), +359 söz", "B1 завершён: 14 новых наборов, +359 слов"]],'V26.16':[["📚 B1-ə 9 yeni dəst: Oyunlar, Hobbilər, Ev cihazları, Uğur və uğursuzluq, İncəsənət, İnternet, Təhsil sahələri, Ambisiya, Şəxsi xüsusiyyətlər (+189 söz)", "В B1 добавлено 9 наборов (+189 слов)"]],'V26.15':[["📚 B1-ə 9 yeni dəst: Din və bayramlar, Xüsusi günlər, Müharibə və sülh, Miqdar və qablar, Romantika, Həyat mərhələləri, Əkinçilik, Media, Sosial problemlər (+208 söz)", "В B1 добавлено 9 наборов (+208 слов)"]],'V26.14':[["📚 B1-ə 9 yeni dəst: Hava, Görünüş, Vaxt, İnsan bədəni, Kompüter, Təbiət və regionlar, Şəhər və kənd, Hisslər, Hüquq və siyasət (+243 söz)", "В B1 добавлено 9 наборов: погода, внешность, время, тело, компьютер, природа, город и деревня, чувства, право и политика (+243 слов)"]],'V26.13':[["📚 Lüğətə 9 yeni dəst: B1 (Səhiyyə, Ətraf mühit, Səyahət), B2 (Yemək hazırlamaq, Tibb, Turizm), C1 (Kompüter elmi, Coğrafiya, Tibb). C1 səviyyəsi açıldı, +285 söz", "В словарь добавлено 9 наборов для B1, B2 и C1. Открыт уровень C1, +285 слов"]],'V26.12':[["📚 B2 səviyyəsi açıldı: 9 yeni dəst (Elektron cihazlar, Cinayət, Hüquq, Siyasət, Pul və iqtisadiyyat, Kosmos, Elmi tədqiqat, Əminlik və şübhə, Təhlükə və risk), 301 söz", "Открыт уровень B2: 9 новых наборов, 301 слов"]],'V26.11':[["📚 B1 səviyyəsinə 6 yeni dəst əlavə olundu: Zərflər və önlüklər, Təhsil, Pul və alış-veriş, Moda, İdman və oyunçular, Nəqliyyat. İndi B1-də 16 dəst, 503 söz var", "В уровень B1 добавлено 6 новых наборов: Наречия и предлоги, Образование, Деньги и покупки, Мода, Спорт и игроки, Транспорт. Теперь в B1 16 наборов, 503 слов"]]};
 const nl=()=>document.documentElement.lang=='ru';
 window.showNews=function(force){try{
  if(document.getElementById('newsbox'))return;
