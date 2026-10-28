@@ -1132,7 +1132,7 @@ window.vocHome=function(){_vh.apply(this,arguments);try{
 })()}catch(e){console.warn(e)}
 
 /* PWA */
-var APP_VER='V26.24';
+var APP_VER='V26.25';
 try{if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0){
 const ru=()=>document.documentElement.lang=='ru',T=(a,r)=>ru()?r:a;
 const vnum=v=>{const m=/(\d+)\.(\d+)/.exec(v||'');return m?(+m[1])*1000+(+m[2]):0};
@@ -1154,8 +1154,20 @@ function showBar(){if(shown||document.getElementById('updbar'))return;
  updSize().then(z=>{if(z){const sp=d.querySelector('span');if(sp)sp.textContent+=' · '+z}});
  d.querySelector('.x').onclick=()=>{d.remove();shown=false;try{sessionStorage.setItem('updDismiss',String(pending))}catch(e){}};
  document.body.appendChild(d)}
-async function applyUpd(){try{const r=reg||await navigator.serviceWorker.getRegistration();if(r&&r.waiting)r.waiting.postMessage('SKIP_WAITING')}catch(e){}
- setTimeout(()=>location.reload(),250)}
+async function applyUpd(){
+ const b=document.querySelector('#updbar .p');if(b){b.disabled=true;b.textContent=T('Yüklənir və yoxlanılır…','Загрузка и проверка…')}
+ try{
+  const r=reg||await navigator.serviceWorker.getRegistration();if(!r)throw new Error('no registration');
+  // Service Worker əvvəlcə yeni faylları yükləyib yoxlamalı, sonra aktivləşməlidir.
+  let w=r.waiting;
+  if(!w&&r.installing){w=r.installing;await new Promise((resolve,reject)=>{const done=()=>{if(w.state==='installed')resolve();else if(w.state==='redundant')reject(new Error('install failed'))};w.addEventListener('statechange',done);done()})}
+  if(!w&&r.waiting)w=r.waiting;
+  if(!w){await r.update();w=r.waiting||r.installing}
+  if(!w)throw new Error('update not ready');
+  const changed=new Promise(resolve=>{if(navigator.serviceWorker.controller){navigator.serviceWorker.addEventListener('controllerchange',resolve,{once:true});setTimeout(resolve,8000)}else resolve()});
+  w.postMessage('SKIP_WAITING');await changed;location.reload();
+ }catch(e){if(b){b.disabled=false;b.textContent=T('Yenidən yoxla','Повторить')};try{await check()}catch(_){}}
+}
 function onNew(ver){pending=ver||pending||'sw';showBar();notifyOS(ver)}
 /* serverdəki versiyanı oxu: əvvəl version.json, olmasa sw.js */
 async function remoteVer(){
@@ -1171,7 +1183,7 @@ async function check(){if(busy)return undefined;busy=true;try{
  return ''}finally{busy=false}}
 navigator.serviceWorker.addEventListener('controllerchange',()=>{check()});
 addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').then(r=>{reg=r;
- r.addEventListener('updatefound',()=>{const w=r.installing;if(w)w.addEventListener('statechange',()=>{if(w.state==='installed'&&navigator.serviceWorker.controller)check()})});
+ r.addEventListener('updatefound',()=>{const w=r.installing;if(w)w.addEventListener('statechange',()=>{if(w.state==='installed'&&navigator.serviceWorker.controller){check().then(v=>{if(v!==null&&v!==undefined&&!v&&r.waiting){pending='sw';showBar()}})}})});
  setTimeout(check,2500);
  setInterval(check,15*60*1000);
  document.addEventListener('visibilitychange',()=>{if(document.visibilityState=='visible')check()});
