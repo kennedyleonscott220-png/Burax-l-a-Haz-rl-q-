@@ -1,4 +1,4 @@
-const V='buraxilis-v26-5',VER='V26.5';
+const V='buraxilis-v26-6',VER='V26.6';
 const FILES=['./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
 // Quraşdırma: hər faylı ayrıca yüklə; çatışmayan fayl (məs. ikon) quraşdırmanı pozmasın
 self.addEventListener('install',e=>{e.waitUntil((async()=>{const c=await caches.open(V);
