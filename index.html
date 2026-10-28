@@ -184,7 +184,31 @@ button{position:relative;overflow:hidden}
 .res>.card:first-of-type{animation:popin .6s cubic-bezier(.3,1.4,.5,1) both}
 #cfx{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
 #cfx i{position:absolute;top:30%;left:50%;width:9px;height:14px;border-radius:2px;animation:cfall 1.8s cubic-bezier(.15,.7,.3,1) forwards}
-</style></head><body><style>
+</style><style id="v2630-motion">
+/* V26.30: smooth, lightweight motion across the interface */
+:root{--motion-fast:180ms;--motion-mid:280ms;--motion-slow:520ms;--motion-ease:cubic-bezier(.2,.75,.25,1)}
+html{scroll-behavior:smooth}
+body{animation:v2630PageIn .55s var(--motion-ease) both}
+body:before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;opacity:.42;background:radial-gradient(ellipse at 15% 10%,rgba(211,174,95,.12),transparent 36%),radial-gradient(ellipse at 85% 70%,rgba(85,111,255,.10),transparent 38%);animation:v2630Ambient 18s ease-in-out infinite alternate;transform:translateZ(0)}
+button,a,[role="button"],input,select,textarea{transition:transform var(--motion-fast) var(--motion-ease),box-shadow var(--motion-mid) var(--motion-ease),filter var(--motion-fast) ease,background-color var(--motion-mid) ease,border-color var(--motion-mid) ease,opacity var(--motion-fast) ease}
+button:hover,a:hover,[role="button"]:hover{filter:brightness(1.08)}
+button:active,a:active,[role="button"]:active{transform:scale(.975)}
+button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid rgba(218,184,112,.85);outline-offset:3px}
+.card,.panel,.modal,.sheet,.tile,.setting-item,.update-card,.news-card,article,[class*="card"],[class*="Card"]{transition:transform var(--motion-mid) var(--motion-ease),box-shadow var(--motion-mid) var(--motion-ease),border-color var(--motion-mid) ease}
+.card:hover,.panel:hover,.tile:hover,.setting-item:hover,.update-card:hover,.news-card:hover,article:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.14)}
+img,svg{transition:filter var(--motion-mid) ease,opacity var(--motion-mid) ease}
+nav a,.nav-item,.tab,.menu-item{position:relative;transition:color var(--motion-fast) ease,background-color var(--motion-mid) ease,transform var(--motion-fast) var(--motion-ease)}
+nav a:after,.nav-item:after,.tab:after{content:"";position:absolute;left:18%;right:18%;bottom:3px;height:2px;border-radius:3px;background:currentColor;transform:scaleX(0);transform-origin:center;transition:transform var(--motion-mid) var(--motion-ease);opacity:.75}
+nav a:hover:after,.nav-item:hover:after,.tab:hover:after{transform:scaleX(1)}
+@keyframes v2630PageIn{from{opacity:0}to{opacity:1}}
+@keyframes v2630Ambient{from{transform:translate3d(-1%,0,0) scale(1)}to{transform:translate3d(1%,1%,0) scale(1.04)}}
+@keyframes v2630Rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes v2630Glow{0%,100%{box-shadow:0 0 0 rgba(218,184,112,0)}50%{box-shadow:0 0 22px rgba(218,184,112,.13)}}
+/* Motion is intentionally subtle on phones to keep the app responsive. */
+@media (hover:none){.card:hover,.panel:hover,.tile:hover,.setting-item:hover,.update-card:hover,.news-card:hover,article:hover{transform:none;box-shadow:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head><body><style>
 #bsplash{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;flex-direction:column;background:radial-gradient(circle at 50% 38%,#3556f0 0,#2540d9 38%,#16248f 100%);color:#fff;font-family:system-ui,-apple-system,Roboto,Arial,sans-serif;text-align:center;transition:opacity .45s ease,transform .45s ease;padding:env(safe-area-inset-top,0px) 24px env(safe-area-inset-bottom,0px)}
 #bsplash.out{opacity:0;transform:scale(1.06);pointer-events:none}
 #bsplash .bs-cap{width:190px;height:190px;animation:bsDrop .9s cubic-bezier(.2,1.35,.4,1) both}
@@ -1149,7 +1173,7 @@ window.vocHome=function(){_vh.apply(this,arguments);try{
 })()}catch(e){console.warn(e)}
 
 /* PWA */
-var APP_VER='V26.29';
+var APP_VER='V26.30';
 try{if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0){
 const ru=()=>document.documentElement.lang=='ru',T=(a,r)=>ru()?r:a;
 const vnum=v=>{const m=/(\d+)\.(\d+)/.exec(v||'');return m?(+m[1])*1000+(+m[2]):0};
@@ -1224,7 +1248,8 @@ const NEWS_PAGES=[
  {icon:'🎨',title:['Yeni üslublar','Новые стили'],lead:['Proqramın görünüşünü öz zövqünə uyğun seç.','Выбери оформление приложения под себя.'],body:['Ayarlar bölməsində “Üslublar” kartını aç və istədiyin görünüşü seç. Dəyişiklik dərhal tətbiq olunur.','Открой раздел «Стили» в настройках и выбери оформление. Изменения применяются сразу.']},
  {icon:'🖤',title:['Premium və rəng seçimləri','Премиум и цветовые темы'],lead:['6 fərqli görünüş arasından seçim et.','Выбирай из 6 вариантов оформления.'],body:['Orijinal — standart görünüş; Premium — qara və qızılı; Okean — tünd mavi və firuzəyi; Meşə — tünd yaşıl; Bənövşəyi — dərin bənövşəyi; Rose — tünd çəhrayı.','Оригинал — стандартный вид; Премиум — чёрный и золотой; Океан — тёмно-синий и бирюзовый; Лес — тёмно-зелёный; Фиолетовый — глубокие фиолетовые тона; Rose — тёмно-розовый.']},
  {icon:'💾',title:['Seçimin yadda saxlanır','Твой выбор сохраняется'],lead:['Hər dəfə yenidən seçməyə ehtiyac yoxdur.','Не нужно выбирать тему заново.'],body:['Seçilmiş üslub həmin cihazda yadda saxlanılır və proqramı növbəti dəfə açanda da tətbiq edilir. Başqa üslubu istənilən vaxt seçə bilərsən.','Выбранный стиль сохраняется на этом устройстве и применяется при следующем запуске. В любой момент можно выбрать другой.']},
- {icon:'✨',title:['Daha rahat istifadə','Больше удобства'],lead:['Görünüşü dəyiş, öyrənməyə davam et.','Меняй оформление и продолжай заниматься.'],body:['Bu yeniləmə əsasən görünüş seçimlərinə aiddir. Lüğət, məşq və digər mövcud bölmələrdən əvvəlki kimi istifadə et. Fikir və təkliflərin varsa, növbəti yeniləmələrdə onları da nəzərə ala bilərik.','Это обновление посвящено оформлению. Продолжай пользоваться словарём, практикой и остальными разделами как обычно. Идеи и предложения можно учесть в следующих обновлениях.']}
+ {icon:'✨',title:['Daha rahat istifadə','Больше удобства'],lead:['Görünüşü dəyiş, öyrənməyə davam et.','Меняй оформление и продолжай заниматься.'],body:['Bu yeniləmə əsasən görünüş seçimlərinə aiddir. Lüğət, məşq və digər mövcud bölmələrdən əvvəlki kimi istifadə et. Fikir və təkliflərin varsa, növbəti yeniləmələrdə onları da nəzərə ala bilərik.','Это обновление посвящено оформлению. Продолжай пользоваться словарём, практикой и остальными разделами как обычно. Идеи и предложения можно учесть в следующих обновлениях.']},
+ {icon:'🎬',title:['Yeni animasiyalar','Новые анимации'],lead:['Keçidlər daha yumşaq və axıcıdır.','Переходы стали плавнее.'],body:['Səhifələr açılarkən yumşaq görünmə effektləri, düymə və kartlarda toxunuşa reaksiya, menyularda axıcı keçidlər və incə işıq hərəkətləri əlavə edildi. Animasiya effektləri yüngül saxlanılıb; cihazında “hərəkəti azalt” seçimi aktivdirsə, hərəkətlər minimuma endirilir.','Добавлены плавное появление страниц, отклик кнопок и карточек на нажатия, переходы меню и лёгкие световые эффекты. Анимации сделаны лёгкими; если на устройстве включено уменьшение движения, эффекты сводятся к минимуму.']}
 ];
 const nl=()=>document.documentElement.lang==='ru';
 window.showNews=function(force){try{
@@ -1652,5 +1677,8 @@ window.solHTML=function(x){
  return h};
 }catch(e){console.error(e)}
 
+</script>
+<script id="v2630-motion-script">
+(()=>{if(window.__v2630Motion)return;window.__v2630Motion=true;const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced)return;const animate=()=>{const nodes=document.querySelectorAll('main,section,[role="dialog"],.page,.screen,.modal,.sheet,.news-card,.update-card');let i=0;nodes.forEach(el=>{if(!el||el.dataset.motionSeen||el.offsetParent===null)return;el.dataset.motionSeen='1';el.style.animation='v2630Rise 420ms cubic-bezier(.2,.75,.25,1) both';el.style.animationDelay=Math.min(i++*35,210)+'ms';el.addEventListener('animationend',()=>{el.style.animation='';el.style.animationDelay=''}, {once:true});});};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',animate,{once:true});else animate();const obs=new MutationObserver(()=>animate());obs.observe(document.documentElement,{childList:true,subtree:true});})();
 </script>
 </body></html>
