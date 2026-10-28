@@ -1,4 +1,4 @@
-const V='buraxilis-v26-32',VER='V26.32';
+const V='buraxilis-v26-34',VER='V26.34';
 const FILES=['./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
 // Quraşdırma: hər faylı ayrıca yüklə; çatışmayan fayl (məs. ikon) quraşdırmanı pozmasın
 self.addEventListener('install',e=>{e.waitUntil((async()=>{const c=await caches.open(V);
@@ -23,4 +23,4 @@ self.addEventListener('notificationclick',e=>{e.notification.close();e.waitUntil
  const cl=await clients.matchAll({type:'window',includeUncontrolled:true});
  for(const c of cl){if('focus' in c)return c.focus()}
  return clients.openWindow('./')})())});
-// build: V26.3
+// build: V26.34
