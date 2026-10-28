@@ -1091,31 +1091,43 @@ new MutationObserver(run).observe(app,{childList:true,subtree:true});
 run();
 })()}catch(e){console.warn(e)}
 
-/* ===== V26.5: Lüğət – səviyyələr (A1–C1) ===== */
+/* ===== V26.7: Lüğət səviyyələri (A1–C1) + animasiya ===== */
 try{(function(){
-const st=document.createElement('style');st.textContent='.lv{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin:4px 0 2px;-webkit-overflow-scrolling:touch}.lv button{margin:0;flex:none;white-space:nowrap;border-radius:99px;padding:8px 18px}.lv button.on{background:var(--p);border-color:var(--p);color:#fff}.lvn{text-align:center;padding:26px 16px}';document.head.appendChild(st);
+const d='calc(var(--sp,1)*';
+const st=document.createElement('style');st.textContent='.lv{position:relative;display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin:4px 0 2px;-webkit-overflow-scrolling:touch}.lv button{margin:0;flex:none;white-space:nowrap;border-radius:99px;padding:8px 18px;transition:background-color '+d+'.3s) ease,color '+d+'.3s) ease,border-color '+d+'.3s) ease,box-shadow '+d+'.3s) ease,transform '+d+'.15s) ease}.lv button:active{transform:scale(.92)}.lv button.on{background:var(--p);border-color:var(--p);color:#fff;box-shadow:0 4px 14px color-mix(in srgb,var(--p) 40%,transparent)}.lvn{text-align:center;padding:26px 16px}.lvc{animation:lvin '+d+'.4s) cubic-bezier(.2,.8,.2,1) both;animation-delay:'+d+'var(--d,0)*1ms)}@keyframes lvin{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.lv button{transition:none}.lvc{animation:none}}';
+document.head.appendChild(st);
 const LV=[['A1','A1'],['A2','A2'],['B1','B1'],['B2','B2'],['C1','C1'],['d','Əsas'],['m','Mənim']];
 const lvOf=id=>id[0]=='d'?'d':id[0]=='x'?'A1':id[0]=='y'?'A2':'m';
+function apply(A,cur,anim){
+ let shown=0,n=0;
+ A.querySelectorAll('.lvn').forEach(e=>e.remove());
+ A.querySelectorAll('.card').forEach(c=>{
+  const b=c.querySelector('button[onclick^="vocStudy("]');
+  const k=b?lvOf(b.getAttribute('onclick').match(/'(.+?)'/)[1]):(c.querySelector('#ve')?'m':null);
+  if(k===null)return;
+  const on=k==cur;c.style.display=on?'':'none';c.classList.remove('lvc');
+  if(on){shown++;if(anim){c.style.setProperty('--d',Math.min(n,8)*55);void c.offsetWidth;c.classList.add('lvc');n++}}
+ });
+ const lv=A.querySelector('.lv');if(!lv)return;
+ if(!shown)lv.insertAdjacentHTML('afterend','<div class="card lvn lvc" style="--d:0"><b>'+cur+' sözləri tezliklə əlavə olunacaq</b></div>');
+ lv.querySelectorAll('button').forEach(b=>{const on=b.dataset.k==cur;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});
+ const on=lv.querySelector('.on');
+ if(on){const x=on.offsetLeft-lv.clientWidth/2+on.offsetWidth/2;if(anim&&lv.scrollTo&&A.dataset.lvs)lv.scrollTo({left:x,behavior:'smooth'});else lv.scrollLeft=x}
+}
 const _vh=window.vocHome;
-window.setVocLv=function(k){try{localStorage.setItem('vlv',k)}catch(e){}window.vocHome()};
+window.setVocLv=function(k){try{localStorage.setItem('vlv',k)}catch(e){}const A=document.getElementById('app');if(A.querySelector('.lv')){A.dataset.lvs='1';apply(A,k,true)}else window.vocHome()};
 window.vocHome=function(){_vh.apply(this,arguments);try{
- const A=document.getElementById('app');let cur='A1';try{cur=localStorage.getItem('vlv')||'A1'}catch(e){}
+ const A=document.getElementById('app');delete A.dataset.lvs;let cur='A1';try{cur=localStorage.getItem('vlv')||'A1'}catch(e){}
  if(!LV.some(x=>x[0]==cur))cur='A1';
  const h=A.querySelector('h1');if(h)h.textContent='📚 A1–C1 sözlər';
- let shown=0;
- A.querySelectorAll('.card').forEach(c=>{const b=c.querySelector('button[onclick^="vocStudy("]');
-  const k=b?lvOf(b.getAttribute('onclick').match(/'(.+?)'/)[1]):(c.querySelector('#ve')?'m':null);
-  if(k===null)return;const on=k==cur;c.style.display=on?'':'none';if(on)shown++});
- const bar='<div class="lv" role="tablist">'+LV.map(x=>'<button role="tab" class="'+(x[0]==cur?'on':'')+'" aria-selected="'+(x[0]==cur)+'" onclick="setVocLv(\''+x[0]+'\')">'+x[1]+'</button>').join('')+'</div>';
+ const bar='<div class="lv" role="tablist">'+LV.map(x=>'<button role="tab" data-k="'+x[0]+'" onclick="setVocLv(\''+x[0]+'\')">'+x[1]+'</button>').join('')+'</div>';
  (A.querySelector('p.m')||h).insertAdjacentHTML('afterend',bar);
- const lv=A.querySelector('.lv'),on=lv.querySelector('.on');
- if(!shown)lv.insertAdjacentHTML('afterend','<div class="card lvn"><b>'+cur+' sözləri tezliklə əlavə olunacaq</b></div>');
- if(on)lv.scrollLeft=on.offsetLeft-lv.clientWidth/2+on.offsetWidth/2;
+ apply(A,cur,true);
 }catch(e){console.warn(e)}};
 })()}catch(e){console.warn(e)}
 
 /* PWA */
-var APP_VER='V26.6';
+var APP_VER='V26.7';
 try{if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0){
 const ru=()=>document.documentElement.lang=='ru',T=(a,r)=>ru()?r:a;
 const vnum=v=>{const m=/(\d+)\.(\d+)/.exec(v||'');return m?(+m[1])*1000+(+m[2]):0};
@@ -1186,7 +1198,7 @@ if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catc
 
 /* ===== Yeniliklər (hər versiyada yalnız 1 dəfə avtomatik görünür) ===== */
 try{
-const NEWS={'V26.6':[["📚 Lüğət səhifəsi yeniləndi: başlıq «A1–C1 sözlər», A1, A2, B1, B2, C1 səviyyə düymələri ilə", "Страница «Словарь» обновлена: заголовок «Слова A1–C1» и кнопки уровней A1, A2, B1, B2, C1"],["Lüğətə ilk 5 «A2» dəsti əlavə olundu (161 söz): Ev cihazları, Geyim və aksesuarlar, Rənglər və formalar, Kompüter və məlumat, Məktəb və təhsil. Qalanı növbəti yeniləmələrdə", "В «Словарь» добавлены первые 5 наборов «A2» (161 слово): Бытовая техника, Одежда и аксессуары, Цвета и формы, Компьютер и информация, Школа и образование. Остальные в следующих обновлениях"],["Lüğət kartlarındakı bar indi yumşaq dolur, nəticə, XP və hədəf barları da animasiya ilə dolur", "Полоса в карточках «Словарь» теперь плавно заполняется, полосы результата, XP и цели тоже анимированы"]]};
+const NEWS={'V26.7':[["Lüğətdə A1–C1 səviyyə düymələri və dəstlər animasiya ilə dəyişir: düymə rəngi yumşaq keçir, seçilən səviyyənin dəstləri ardıcıl yuxarı qalxaraq görünür", "В «Словарь» кнопки уровней A1–C1 и наборы теперь сменяются с анимацией: цвет кнопки плавно меняется, наборы выбранного уровня появляются по очереди"]]};
 const nl=()=>document.documentElement.lang=='ru';
 window.showNews=function(force){try{
  if(document.getElementById('newsbox'))return;
