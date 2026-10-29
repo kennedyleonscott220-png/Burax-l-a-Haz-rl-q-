@@ -255,6 +255,79 @@ nav a:hover:after,.nav-item:hover:after,.tab:hover:after{transform:scaleX(1)}
 @media(min-width:520px){.style-presets{grid-template-columns:repeat(3,minmax(0,1fr))}}
 </style>
 <div id="bsplash" aria-hidden="true"><div class="bs-glow"></div><svg class="bs-cap" viewBox="0 0 512 512"><polygon points="148,262 256,314 364,262 364,338 256,392 148,338" fill="#cdd6f5"/><polygon points="148,262 256,314 364,262 364,300 256,352 148,300" fill="#e1e7fa"/><polygon points="256,126 450,208 256,290 62,208" fill="#fff"/><g class="bs-tas"><path d="M256 208 L412 247 L412 330" stroke="#ffc83d" stroke-width="9" fill="none"/><circle cx="412" cy="337" r="15" fill="#ffc83d"/><polygon points="404,345 420,345 426,388 398,388" fill="#ffc83d"/></g><circle cx="256" cy="208" r="12" fill="#ffc83d"/></svg><div class="bs-t">Buraxılışa hazırlıq</div><div class="bs-s">Buraxılış və blok imtahanları</div><div class="bs-bar"><i></i></div></div>
+<style id="v28-design">
+/* V28.0 — "Rəngli" dizayn: canlı, yumru, 3D düymələr */
+:root[data-stylepreset=canli]{--bg:#f7fbff;--c:#fff;--t:#3c3c3c;--m:#7a7a7a;--p:#58cc02;--pi:#fff;--ok:#58cc02;--no:#ff4b4b;--b:#e5e5e5;--hi:#ffc800;--hit:#4b3b00;--ink:#1cb0f6;--bd:#e5e5e5;--gd:#46a302;--bl:#1cb0f6;--bld:#1899d6;--sh:none;color-scheme:light}
+@media(prefers-color-scheme:dark){:root[data-stylepreset=canli]:not([data-theme=light]){--bg:#131f24;--c:#1f2c34;--t:#f1f7fb;--m:#a8b8c2;--p:#58cc02;--pi:#0e1b10;--ok:#6fe01a;--no:#ff6b6b;--b:#37464f;--hi:#ffc800;--hit:#3a2e00;--ink:#1899d6;--bd:#37464f;--gd:#3a8a00;--bl:#49c0f8;--bld:#1481b8;color-scheme:dark}}
+:root[data-stylepreset=canli][data-theme=dark]{--bg:#131f24;--c:#1f2c34;--t:#f1f7fb;--m:#a8b8c2;--p:#58cc02;--pi:#0e1b10;--ok:#6fe01a;--no:#ff6b6b;--b:#37464f;--hi:#ffc800;--hit:#3a2e00;--ink:#1899d6;--bd:#37464f;--gd:#3a8a00;--bl:#49c0f8;--bld:#1481b8;color-scheme:dark}
+:root[data-stylepreset=canli] body{font-family:ui-rounded,"SF Pro Rounded","Nunito","Varela Round",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);animation:none}
+:root[data-stylepreset=canli] body:before{display:none}
+:root[data-stylepreset=canli] h1,:root[data-stylepreset=canli] h2,:root[data-stylepreset=canli] .big,:root[data-stylepreset=canli] .qn{font-weight:900;letter-spacing:-.02em}
+:root[data-stylepreset=canli] h1{font-size:31px}
+:root[data-stylepreset=canli] .card{border:2px solid var(--b);border-radius:22px;box-shadow:0 4px 0 var(--bd);background:var(--c)}
+:root[data-stylepreset=canli] button{font-weight:800;border:2px solid var(--bd);border-radius:16px;box-shadow:0 4px 0 var(--bd);background:var(--c);color:var(--t);letter-spacing:.01em}
+:root[data-stylepreset=canli] button:active:not(:disabled){transform:translateY(4px);box-shadow:0 0 0 var(--bd);filter:none}
+:root[data-stylepreset=canli] button:hover:not(:disabled){filter:none;border-color:var(--bd)}
+:root[data-stylepreset=canli] button:disabled{opacity:.5;box-shadow:none;transform:translateY(4px)}
+:root[data-stylepreset=canli] button.p{background:var(--p);border-color:var(--p);color:#fff;box-shadow:0 4px 0 var(--gd);text-transform:uppercase;letter-spacing:.04em;font-size:.95em}
+:root[data-stylepreset=canli] button.p:active:not(:disabled){box-shadow:0 0 0 var(--gd)}
+:root[data-stylepreset=canli] .hero{background-color:var(--ink);border:2px solid var(--ink);box-shadow:0 5px 0 var(--bld);color:#fff;background-image:linear-gradient(160deg,rgba(255,255,255,.22),transparent 55%)}
+:root[data-stylepreset=canli] .hero button.p{background:#fff;border-color:#fff;color:var(--bld);box-shadow:0 4px 0 rgba(0,0,0,.16)}
+:root[data-stylepreset=canli] .hero button.p:active:not(:disabled){box-shadow:0 0 0 rgba(0,0,0,.16)}
+:root[data-stylepreset=canli] .tile{border-radius:20px;box-shadow:0 4px 0 var(--bd)}
+:root[data-stylepreset=canli] .tile b{font-weight:900}
+:root[data-stylepreset=canli] .o{border:2px solid var(--bd);border-radius:18px;box-shadow:0 4px 0 var(--bd);font-weight:700}
+:root[data-stylepreset=canli] .o:active:not(.lock){transform:translateY(4px);box-shadow:0 0 0 var(--bd)}
+:root[data-stylepreset=canli] .bb{border:2px solid var(--bd);color:var(--m);font-weight:900;background:var(--c)}
+:root[data-stylepreset=canli] .o.sel{border-color:var(--bl);background:color-mix(in srgb,var(--bl) 13%,var(--c));box-shadow:0 4px 0 var(--bld)}
+:root[data-stylepreset=canli] .o.sel .bb{background:var(--bl);border-color:var(--bl);color:#fff}
+:root[data-stylepreset=canli] .o.right{border-color:var(--p);background:color-mix(in srgb,var(--p) 16%,var(--c));box-shadow:0 4px 0 var(--gd);animation:v28hop .45s cubic-bezier(.3,1.6,.5,1)}
+:root[data-stylepreset=canli] .o.right .bb{background:var(--p);border-color:var(--p);color:#fff}
+:root[data-stylepreset=canli] .o.wrong{border-color:var(--no);background:color-mix(in srgb,var(--no) 14%,var(--c));box-shadow:0 4px 0 #d33a3a}
+:root[data-stylepreset=canli] .o.wrong .bb{background:var(--no);border-color:var(--no);color:#fff}
+:root[data-stylepreset=canli] .qc{border-radius:24px}
+:root[data-stylepreset=canli] .tag,:root[data-stylepreset=canli] .tm{border:2px solid var(--bd);font-weight:800;border-radius:99px;background:var(--c)}
+:root[data-stylepreset=canli] .prog,:root[data-stylepreset=canli] .meter{height:16px;border-radius:99px;background:var(--b)}
+:root[data-stylepreset=canli] .prog i,:root[data-stylepreset=canli] .meter i{background:var(--p);box-shadow:inset 0 5px 0 rgba(255,255,255,.28)}
+:root[data-stylepreset=canli] .g button{border:2px solid var(--bd);font-weight:800}
+:root[data-stylepreset=canli] .g .d{background:var(--p);border-color:var(--gd);color:#fff;box-shadow:0 3px 0 var(--gd)}
+:root[data-stylepreset=canli] .g .cur{box-shadow:0 0 0 3px var(--bg),0 0 0 6px var(--bl)}
+:root[data-stylepreset=canli] .seg{border:2px solid var(--bd);border-radius:16px;background:var(--c)}
+:root[data-stylepreset=canli] .seg button,:root[data-stylepreset=canli] .chips2 button{box-shadow:none;border-width:0;transform:none}
+:root[data-stylepreset=canli] .seg button.on{background:var(--p);color:#fff;box-shadow:0 3px 0 var(--gd)}
+:root[data-stylepreset=canli] .chips2 button{border:2px solid var(--bd);box-shadow:0 3px 0 var(--bd)}
+:root[data-stylepreset=canli] .chips2 button.on{background:var(--p);border-color:var(--p);color:#fff;box-shadow:0 3px 0 var(--gd)}
+:root[data-stylepreset=canli] .sw{border:0;box-shadow:none;background:var(--bd)}
+:root[data-stylepreset=canli] .sw.on{background:var(--p)}
+:root[data-stylepreset=canli] input,:root[data-stylepreset=canli] textarea,:root[data-stylepreset=canli] select{border:2px solid var(--bd);border-radius:16px;font-weight:700;background:var(--c)}
+:root[data-stylepreset=canli] input:focus,:root[data-stylepreset=canli] textarea:focus,:root[data-stylepreset=canli] select:focus{border-color:var(--bl);box-shadow:0 0 0 4px color-mix(in srgb,var(--bl) 20%,transparent)}
+:root[data-stylepreset=canli] #tabs{background:var(--c);border-top:2px solid var(--b);backdrop-filter:none;-webkit-backdrop-filter:none}
+:root[data-stylepreset=canli] #tabs button{box-shadow:none;border:0;background:none;font-weight:800;color:var(--m);transform:none}
+:root[data-stylepreset=canli] #tabs button:active:not(:disabled){transform:none;box-shadow:none}
+:root[data-stylepreset=canli] #tabs svg{stroke-width:2.2}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(1).on{color:#58cc02}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(1).on svg{filter:drop-shadow(0 3px 4px color-mix(in srgb,#58cc02 55%,transparent))}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(2).on{color:#1cb0f6}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(2).on svg{filter:drop-shadow(0 3px 4px color-mix(in srgb,#1cb0f6 55%,transparent))}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(3).on{color:#ce82ff}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(3).on svg{filter:drop-shadow(0 3px 4px color-mix(in srgb,#ce82ff 55%,transparent))}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(4).on{color:#ff9600}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(4).on svg{filter:drop-shadow(0 3px 4px color-mix(in srgb,#ff9600 55%,transparent))}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(5).on{color:#ff86d0}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(5).on svg{filter:drop-shadow(0 3px 4px color-mix(in srgb,#ff86d0 55%,transparent))}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(6).on{color:#7a8a96}
+:root[data-stylepreset=canli] #tabs button:nth-of-type(6).on svg{filter:drop-shadow(0 3px 4px color-mix(in srgb,#7a8a96 55%,transparent))}
+:root[data-stylepreset=canli] #tabs .ind{display:none}
+:root[data-stylepreset=canli] .dock{background:var(--c);border-top:2px solid var(--b);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+:root[data-stylepreset=canli] .dock button{border-radius:16px}
+:root[data-stylepreset=canli] .fbk{border-radius:16px;font-weight:800}
+:root[data-stylepreset=canli] table{border-radius:14px}
+:root[data-stylepreset=canli] #newsbox [data-close]{padding:0;margin:0;display:grid;place-items:center;line-height:1;box-shadow:none;border:2px solid var(--bd)!important;transform:none}
+:root[data-stylepreset=canli] #bsplash{background:radial-gradient(circle at 50% 38%,#7ddc1f 0,#58cc02 42%,#3b8f00 100%)}
+:root[data-stylepreset=canli] #bsplash .bs-bar i{background:#fff}
+@keyframes v28hop{0%{transform:scale(.96)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
+.style-preset[data-style=canli] .swatch{background:linear-gradient(135deg,var(--sw1) 50%,var(--sw2) 50%)}
+</style>
 <script>(function(){var e=document.getElementById('bsplash');if(!e)return;var skip=false;try{var st=JSON.parse(localStorage.getItem('set')||'{}');if(st&&st.anim===false)skip=true;if(sessionStorage.getItem('bsSeen'))skip=true}catch(x){}
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)skip=true;
 if(skip){e.remove();return}
@@ -405,7 +478,7 @@ function home(){clearInterval(tm);
  set:`<h1>${L('Ayarlar','Настройки')}</h1>
  <div class="card"><b>${L('Profil','Профиль')}</b><div class="fld"><input id="nm" maxlength="24" value="${esc(SET.name||'')}" placeholder="${L('Adın (ana səhifədə salam üçün)','Имя (для приветствия)')}" oninput="SET.name=this.value.trim();svS()"></div></div>
  <div class="card"><b>${L('Görünüş','Оформление')}</b><div class="fld"><span>${L('Rejim','Режим')}</span><div class="seg"><button data-t="light" class="${thm=='light'?'on':''}" onclick="setTheme('light')">${L('Açıq','Светлая')}</button><button data-t="dark" class="${thm=='dark'?'on':''}" onclick="setTheme('dark')">${L('Tünd','Тёмная')}</button></div></div>${swR('amoled',L('Tam qara tünd rejim','Чёрная тёмная тема'))}<div class="fld"><span>${L('Əsas rəng','Основной цвет')}</span><div class="sws">${ACC.map(([id,c,n])=>`<button class="swt ${(SET.acc||'blue')==id?'on':''}" style="--sc:${c}" aria-label="${n}" data-v="${id}" onclick="pk('acc',this)"></button>`).join('')}</div></div><div class="fld"><span>${L('Yazı ölçüsü','Размер текста')}</span>${sgB('fs',[['s',L('Kiçik','Мелкий')],['m',L('Orta','Средний')],['l',L('Böyük','Крупный')]],SET.fs||'m')}</div>${swR('hideL',L('Alt menyu yazılarını gizlət','Скрыть подписи меню'))}</div>
- <div class="card"><b>${L('Üslublar','Стили')}</b><p class="m">${L('Proqramın görünüşünü seç. Seçim bu cihazda yadda saxlanacaq.','Выбери оформление. Выбор сохранится на этом устройстве.')}</p><div class="style-presets" role="group" aria-label="${L('Görünüş üslubları','Стили оформления')}">${[['original','Orijinal','Standart görünüş','#eef1f7','#2540d9'],['premium','Premium','Qara və qızılı','#090a0f','#d7b56d'],['ocean','Okean','Tünd mavi və firuzəyi','#07131d','#45c5e8'],['forest','Meşə','Tünd yaşıl','#0b1511','#65d69a'],['violet','Bənövşəyi','Dərin bənövşəyi','#100d1b','#b49aff'],['rose','Rose','Tünd çəhrayı','#1b0d14','#ff8fba'],['glass-lite','Liquid Glass Lite','Yüngül şüşə effekti','#091827','#80dcff'],['liquid-glass','Liquid Glass','Dərin şəffaflıq və canlı şüşə qatları','#07101f','#9cecff']].map(([id,n,d,a,b])=>`<button type="button" class="style-preset ${(LS.g('stylePreset','original')===id?'active':'')}" data-style="${id}" onclick="setStylePreset('${id}')" style="--sw1:${a};--sw2:${b}" aria-pressed="${LS.g('stylePreset','original')===id?'true':'false'}"><span class="swatch" aria-hidden="true"></span><span class="preset-copy"><b>${L(n,({'Orijinal':'Оригинал','Standart görünüş':'Стандартный вид','Premium':'Премиум','Qara və qızılı':'Чёрный и золотой','Okean':'Океан','Tünd mavi və firuzəyi':'Тёмно-синий и бирюзовый','Meşə':'Лес','Tünd yaşıl':'Тёмно-зелёный','Bənövşəyi':'Фиолетовый','Dərin bənövşəyi':'Глубокий фиолетовый','Rose':'Розовый','Tünd çəhrayı':'Тёмно-розовый','Liquid Glass Lite':'Жидкое стекло Lite','Liquid Glass':'Настоящее жидкое стекло','Şüşə effekti və işıq parıltısı':'Эффект жидкого стекла и сияние'})[n]||n)}</b><small>${L(d,({'Standart görünüş':'Стандартный вид','Qara və qızılı':'Чёрный и золотой','Tünd mavi və firuzəyi':'Тёмно-синий и бирюзовый','Tünd yaşıl':'Тёмно-зелёный','Dərin bənövşəyi':'Глубокий фиолетовый','Tünd çəhrayı':'Тёмно-розовый'})[d]||d)}</small></span></button>`).join('')}</div></div>
+ <div class="card"><b>${L('Üslublar','Стили')}</b><p class="m">${L('Proqramın görünüşünü seç. Seçim bu cihazda yadda saxlanacaq.','Выбери оформление. Выбор сохранится на этом устройстве.')}</p><div class="style-presets" role="group" aria-label="${L('Görünüş üslubları','Стили оформления')}">${[['canli','Rəngli','Canlı, şən və oyun kimi','#58cc02','#1cb0f6'],['original','Orijinal','Standart görünüş','#eef1f7','#2540d9'],['premium','Premium','Qara və qızılı','#090a0f','#d7b56d'],['ocean','Okean','Tünd mavi və firuzəyi','#07131d','#45c5e8'],['forest','Meşə','Tünd yaşıl','#0b1511','#65d69a'],['violet','Bənövşəyi','Dərin bənövşəyi','#100d1b','#b49aff'],['rose','Rose','Tünd çəhrayı','#1b0d14','#ff8fba'],['glass-lite','Liquid Glass Lite','Yüngül şüşə effekti','#091827','#80dcff'],['liquid-glass','Liquid Glass','Dərin şəffaflıq və canlı şüşə qatları','#07101f','#9cecff']].map(([id,n,d,a,b])=>`<button type="button" class="style-preset ${(LS.g('stylePreset','original')===id?'active':'')}" data-style="${id}" onclick="setStylePreset('${id}')" style="--sw1:${a};--sw2:${b}" aria-pressed="${LS.g('stylePreset','original')===id?'true':'false'}"><span class="swatch" aria-hidden="true"></span><span class="preset-copy"><b>${L(n,({'Orijinal':'Оригинал','Standart görünüş':'Стандартный вид','Premium':'Премиум','Qara və qızılı':'Чёрный и золотой','Okean':'Океан','Tünd mavi və firuzəyi':'Тёмно-синий и бирюзовый','Meşə':'Лес','Tünd yaşıl':'Тёмно-зелёный','Bənövşəyi':'Фиолетовый','Dərin bənövşəyi':'Глубокий фиолетовый','Rose':'Розовый','Tünd çəhrayı':'Тёмно-розовый','Liquid Glass Lite':'Жидкое стекло Lite','Liquid Glass':'Настоящее жидкое стекло','Şüşə effekti və işıq parıltısı':'Эффект жидкого стекла и сияние'})[n]||n)}</b><small>${L(d,({'Standart görünüş':'Стандартный вид','Qara və qızılı':'Чёрный и золотой','Tünd mavi və firuzəyi':'Тёмно-синий и бирюзовый','Tünd yaşıl':'Тёмно-зелёный','Dərin bənövşəyi':'Глубокий фиолетовый','Tünd çəhrayı':'Тёмно-розовый'})[d]||d)}</small></span></button>`).join('')}</div></div>
  <div class="card"><b>${L('Animasiyalar','Анимации')}</b>${swR('anim',L('Animasiyaları göstər','Показывать анимации'),1)}<div class="fld"><span>${L('Sürət','Скорость')}</span>${sgB('spd',[['slow',L('Yavaş','Медленно')],['normal',L('Normal','Обычно')],['fast',L('Sürətli','Быстро')]],SET.spd||'normal')}</div></div>
  <div class="card"><b>${L('İmtahan','Экзамен')}</b><div class="row"><span>${L('Variant','Вариант')}</span><select onchange="V=this.value">${['A','B','C','D','T'].map(v=>`<option value="${v}" ${v==V?'selected':''}>${v=='T'?L('Təsadüfi','Случайный'):v}</option>`).join('')}</select></div><div class="row"><span>${L('Sektor','Сектор')}</span><select onchange="LG=this.value;SET.lg=LG;svS();document.documentElement.lang=LG;home()"><option value="az" ${LG=='az'?'selected':''}>Azərbaycan</option><option value="ru" ${LG=='ru'?'selected':''}>Rus</option></select></div>${swR('hideT',L('Taymeri gizlət (son 10 dəqiqədə görünür)','Скрыть таймер (виден в последние 10 минут)'))}${swR('vib',L('Vibrasiya','Вибрация'),1)}</div>
  <div class="card"><b>${L('Məşq','Практика')}</b>${swR('inst',L('Cavabı dərhal göstər','Показывать ответ сразу'))}<div class="row"><span>${L('Gündəlik hədəf','Дневная цель')}</span><select onchange="let g=LS.g('goal',{d:{},ex:'',g:30});g.g=+this.value;LS.s('goal',g)">${[10,20,30,50,100].map(n=>`<option value="${n}" ${GL.g==n?'selected':''}>${n} ${L('sual','вопр.')}</option>`).join('')}</select></div><div class="fld"><span>${L('Mini-testdə sual sayı','Вопросов в мини-тесте')}</span>${sgB('mini',[[5,'5'],[10,'10'],[20,'20']],N)}</div><div class="fld"><span>${L('Fənlər (məşq üçün)','Предметы (для практики)')}</span><div class="chips2">${subjAll().map(s=>`<button class="${!SET.subj||SET.subj.includes(s)?'on':''}" data-s="${s}" onclick="ch(this)">${s}</button>`).join('')}</div></div></div>
@@ -418,7 +491,7 @@ function boost(){
  const weak=Object.entries(MS).filter(([k,v])=>Array.isArray(v)&&v[1]>=2).sort((a,b)=>(a[1][0]/Math.max(1,a[1][1]))-(b[1][0]/Math.max(1,b[1][1]))).slice(0,6);
  const streak=(()=>{let n=0;for(let i=0;i<366;i++){let d=new Date(Date.now()-i*864e5).toISOString().slice(0,10);if((G.d[d]||0)>=G.g)n++;else if(i>0)break}return n})();
  const xp=Math.max(0,H.reduce((a,x)=>a+Math.max(0,Math.round(10*(x.t||0)/Math.max(1,x.m||1))),0)+Object.values(G.d||{}).reduce((a,n)=>a+n,0));
- A.innerHTML=`<div class="top"><button onclick="home()">← Geri</button><span class="sp"></span><span class="m">V27.0</span></div><h1>🚀 Ağıllı hazırlıq</h1><p class="m">Nəticələrinə əsaslanan təkrar planı və imtahan alətləri.</p>
+ A.innerHTML=`<div class="top"><button onclick="home()">← Geri</button><span class="sp"></span><span class="m">V28.0</span></div><h1>🚀 Ağıllı hazırlıq</h1><p class="m">Nəticələrinə əsaslanan təkrar planı və imtahan alətləri.</p>
  <div class="card hero"><b>🏆 Öyrənmə göstəricilərin</b><div class="stats-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px"><div class="card"><div class="m">Təxmini XP</div><div style="font-size:25px;font-weight:850">${xp}</div></div><div class="card"><div class="m">Ardıcıl hədəf günləri</div><div style="font-size:25px;font-weight:850">${streak} 🔥</div></div><div class="card"><div class="m">Bu gün cavablanan</div><div style="font-size:25px;font-weight:850">${done}</div></div><div class="card"><div class="m">Toplanmış səhvlər</div><div style="font-size:25px;font-weight:850">${W.length}</div></div></div><p class="m">XP motivasiya göstəricisidir; rəsmi imtahan balı deyil.</p></div>
  <h2>🗓️ Bu gün üçün hazırlıq planı</h2><div class="card"><p class="m">Qısa və davamlı hazırlaş: əvvəl səhvlərini təkrar et, sonra zəif mövzudan mini-test həll et, sonda nəticəni yoxla.</p><div class="meter"><i style="width:${Math.min(100,Math.round(100*done/Math.max(1,G.g)))}%"></i></div><p><b>${Math.max(0,G.g-done)}</b> sual qalıb gündəlik hədəfə.</p><button class="p" ${W.length?'':'disabled'} onclick="startX(wrongList())">1 · Səhvləri təkrar et</button><button onclick="tab('prac')">2 · Mövzu mini-testi</button><button onclick="tab('stat')">3 · Nəticələri yoxla</button></div>
  <h2>🎯 Zəif mövzular</h2><div class="card">${weak.length?weak.map(([k,v])=>`<div style="margin:10px 0"><b>${k.replace('|',' · ')}</b><div class="meter"><i style="width:${Math.min(100,Math.round(100*(v[0]||0)/Math.max(1,v[1]||1)))}%"></i></div><span class="m">${v[0]||0} düzgün / ${v[1]||0} cəhd</span></div>`).join(''):'<p class="m">Mövzular üzrə daha dəqiq təhlil üçün bir neçə məşq tamamla.</p>'}${Object.keys(topics).length?'<hr><b>Səhvlərin mövzu xəritəsi</b>'+Object.entries(topics).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,n])=>`<p style="margin:8px 0">${k}: <b class="no">${n} səhv</b></p>`).join(''):''}<button class="p" ${weak.length?'':'disabled'} onclick="weak()">Zəif mövzulardan test</button> <button ${W.length?'':'disabled'} onclick="startX(wrongList())">Səhvləri təkrar et</button></div>
@@ -429,7 +502,8 @@ function boost(){
  scrollTo({top:0,behavior:'smooth'});
 }
 function setTheme(n){document.documentElement.dataset.theme=n;LS.s('th',n);document.querySelectorAll('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.t==n))}
-function setStylePreset(n){const allowed=['original','premium','ocean','forest','violet','rose','glass-lite','liquid-glass'];if(!allowed.includes(n))n='original';if(n==='original')delete document.documentElement.dataset.stylepreset;else document.documentElement.dataset.stylepreset=n;LS.s('stylePreset',n);document.querySelectorAll('.style-preset').forEach(b=>{const on=b.dataset.style===n;b.classList.toggle('active',on);b.setAttribute('aria-pressed',on?'true':'false')});const meta=document.querySelector('meta[name=theme-color]');if(meta)meta.content=({'original':'#2540d9','premium':'#090a0f','ocean':'#07131d','forest':'#0b1511','violet':'#100d1b','rose':'#1b0d14','glass-lite':'#091827','liquid-glass':'#07101f'})[n];}
+function setStylePreset(n){const allowed=['canli','original','premium','ocean','forest','violet','rose','glass-lite','liquid-glass'];if(!allowed.includes(n))n='original';if(n==='original')delete document.documentElement.dataset.stylepreset;else document.documentElement.dataset.stylepreset=n;LS.s('stylePreset',n);document.querySelectorAll('.style-preset').forEach(b=>{const on=b.dataset.style===n;b.classList.toggle('active',on);b.setAttribute('aria-pressed',on?'true':'false')});const meta=document.querySelector('meta[name=theme-color]');if(meta)meta.content=({'canli':'#58cc02','original':'#2540d9','premium':'#090a0f','ocean':'#07131d','forest':'#0b1511','violet':'#100d1b','rose':'#1b0d14','glass-lite':'#091827','liquid-glass':'#07101f'})[n];}
+try{if(!LS.g('v28d',0)){LS.s('v28d',1);LS.s('stylePreset','canli')}}catch(e){}
 try{let _preset=LS.g('stylePreset','original');if(_preset==='glass'){_preset='glass-lite';LS.s('stylePreset',_preset)}if(_preset&&_preset!=='original')document.documentElement.dataset.stylepreset=_preset}catch(e){}
 const TABS=['home','bur','blok','prac','stat','set'];
 function tab(n){if(n==TAB&&A.className.indexOf('home')==0){scrollTo({top:0,behavior:RM()?'auto':'smooth'});return}TAB=n;home();A.classList.add('swap');scrollTo(0,0)}
@@ -1216,7 +1290,7 @@ window.vocHome=function(){_vh.apply(this,arguments);try{
 })()}catch(e){console.warn(e)}
 
 /* PWA */
-var APP_VER='V27.0';
+var APP_VER='V28.0';
 try{if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0){
 const ru=()=>document.documentElement.lang=='ru',T=(a,r)=>ru()?r:a;
 const vnum=v=>{const m=/(\d+)\.(\d+)/.exec(v||'');return m?(+m[1])*1000+(+m[2]):0};
@@ -1288,11 +1362,13 @@ if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catc
 /* ===== Yeniliklər: 4 səhifəli buraxılış bələdçisi ===== */
 try{
 const NEWS_PAGES=[
+ {icon:'🎨',title:['Yeni rəngli dizayn','Новый яркий дизайн'],lead:['V28.0 — canlı və şən görünüş.','V28.0 — яркий и весёлый вид.'],body:['Bütün proqram yeni rəngli üslubda: yumru kartlar, 3D düymələr, rəngli naviqasiya və canlı cavab rəngləri. Köhnə görünüşə qayıtmaq üçün Ayarlar bölməsində Görünüş üslublarından Orijinalı seç.','Всё приложение в новом ярком стиле: округлые карточки, объёмные кнопки, цветная навигация и живые цвета ответов. Чтобы вернуть прежний вид, выбери Оригинал в настройках стилей.']},
+ {icon:'✅',title:['Suallar və cavab açarları','Вопросы и ключи ответов'],lead:['V27.2 — cavab açarı düzəlişi və yeni suallar.','V27.2 — исправлен ключ и добавлены вопросы.'],body:['Səs faylı sualının düzgün cavabı düzəldildi. Təkrarlanan 48 sual silindi. İnformatika, Riyaziyyat və Fizikaya cavabları hesablamayla yoxlanmış 36 yeni sual əlavə olundu.','Исправлен ответ в задаче про звуковой файл. Удалено 48 повторяющихся вопросов. Добавлено 36 новых вопросов по информатике, математике и физике с проверенными ответами.']},
  {icon:'🧠',title:['Ağıllı hazırlıq mərkəzi','Умный центр подготовки'],lead:['Zəif mövzularını və səhvlərini bir yerdə izlə.','Отслеживай слабые темы и ошибки в одном месте.'],body:['Məşqlərdə toplanan səhvlər mövzular üzrə göstərilir. “Səhvləri təkrar et” və “Zəif mövzulardan test” düymələri ilə çətinlik çəkdiyin hissələrə qayıt. Təhlilin dəqiqliyi əvvəlki məşq və nəticələrinin mövcudluğundan asılıdır.','Ошибки из практики группируются по темам. Используй повтор ошибок и тест по слабым темам. Точность анализа зависит от накопленных попыток и результатов.']},
  {icon:'🏆',title:['Hədəflər və nailiyyətlər','Цели и достижения'],lead:['Hazırlıq ritmini izləmək daha rahatdır.','Следить за регулярностью занятий стало проще.'],body:['Gündəlik sual hədəfini Ayarlardan seç, ardıcıl hədəf günlərini və təxmini XP göstəricisini ağıllı hazırlıq mərkəzində izlə. XP motivasiya göstəricisidir, rəsmi imtahan balı deyil.','Установи дневную цель по количеству вопросов и смотри серию дней и примерный XP в центре подготовки. XP — мотивационный показатель, не официальный экзаменационный балл.']},
  {icon:'📚',title:['Lüğət və təkrar','Словарь и повторение'],lead:['Mövcud lüğət dəstləri və məşq alətləri saxlanılıb.','Существующие словарные наборы и практика сохранены.'],body:['Lüğət bölməsindən sözləri öyrənməyə davam et, məşq və təkrar alətlərindən istifadə et. A1–C1 siyahılarının tamlığı və tərcümələri ayrıca yoxlanmalı ola bilər; bu buraxılış bütün PDF-lərin tam uyğunlaşdırıldığını iddia etmir.','Продолжай учить слова в словаре и используй практику для повторения. Полноту списков A1–C1 и переводы может потребоваться отдельно проверить; этот выпуск не заявляет о полной сверке всех PDF.']},
  {icon:'⏱️',title:['İmtahan və nəticələr','Экзамен и результаты'],lead:['Sınaqlara, məşqlərə və gedişata daha sürətli keçid.','Быстрый переход к экзаменам, практике и прогрессу.'],body:['Buraxılış və blok imtahanı bölmələri, mövzu mini-testləri, səhvlərin təkrarı və nəticə tarixçəsi mövcud qaydada işləməyə davam edir. İmtahanı tamamladıqdan sonra gedişat bölməsində nəticələrini yoxla.','Разделы выпускного и блочного экзамена, тематические мини-тесты, повтор ошибок и история результатов сохранены. После экзамена проверь результаты в разделе прогресса.']},
- {icon:'🛡️',title:['Daha etibarlı yeniləmə','Надёжнее обновление'],lead:['V27.0 — böyük funksional yeniləmə.','V27.0 — крупное функциональное обновление.'],body:['Məlumatların ehtiyat nüsxəsini Ayarlardan JSON faylına çıxara və sonra bərpa edə bilərsən. Yeniləmədən sonra ilk açılışda nəticə və mövzuların saxlandığını yoxla. Görünüş üslubları, o cümlədən Liquid Glass və Liquid Glass Lite, saxlanılıb.','В настройках можно экспортировать данные в JSON и восстановить их позже. После обновления проверь, что результаты и темы сохранились. Стили оформления, включая Liquid Glass и Liquid Glass Lite, сохранены.']}
+ {icon:'🛡️',title:['Daha etibarlı yeniləmə','Надёжнее обновление'],lead:['V27.1 — böyük funksional yeniləmə.','V27.1 — крупное функциональное обновление.'],body:['Məlumatların ehtiyat nüsxəsini Ayarlardan JSON faylına çıxara və sonra bərpa edə bilərsən. Yeniləmədən sonra ilk açılışda nəticə və mövzuların saxlandığını yoxla. Görünüş üslubları, o cümlədən Liquid Glass və Liquid Glass Lite, saxlanılıb.','В настройках можно экспортировать данные в JSON и восстановить их позже. После обновления проверь, что результаты и темы сохранились. Стили оформления, включая Liquid Glass и Liquid Glass Lite, сохранены.']}
 ];
 const nl=()=>document.documentElement.lang==='ru';
 window.showNews=function(force){try{
@@ -1724,4 +1800,80 @@ window.solHTML=function(x){
 <script id="v2630-motion-script">
 (()=>{if(window.__v2630Motion)return;window.__v2630Motion=true;const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced)return;const animate=()=>{const nodes=document.querySelectorAll('main,section,[role="dialog"],.page,.screen,.modal,.sheet,.news-card,.update-card');let i=0;nodes.forEach(el=>{if(!el||el.dataset.motionSeen||el.offsetParent===null)return;el.dataset.motionSeen='1';el.style.animation='v2630Rise 420ms cubic-bezier(.2,.75,.25,1) both';el.style.animationDelay=Math.min(i++*35,210)+'ms';el.addEventListener('animationend',()=>{el.style.animation='';el.style.animationDelay=''}, {once:true});});};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',animate,{once:true});else animate();const obs=new MutationObserver(()=>animate());obs.observe(document.documentElement,{childList:true,subtree:true});})();
 </script>
+
+<script id="v271-source-questions">
+/* V27.1 — istifadəçinin göndərdiyi iki PDF-dən oxunaqlı çıxarılan suallar. */
+(function(){
+S['İnformatika']=(S['İnformatika']||[]).concat([
+["Say sistemləri · PDF Güvən 2025", "FB2₁₆ ədədinin səkkizlik say sistemində qarşılığı hansıdır?", ["6642₈","7662₈","3352₈","6752₈","7542₈"], 1, null],
+["Kodlaşdırma · PDF Güvən 2025", "4096 Kbit + 1024 Kbayt + 1024 Bayt cəmi neçə Kbaytdır? (1 Kbayt = 1024 Bayt)", ["2049 Kbayt","1025 Kbayt","1537 Kbayt","524 Kbayt","5000 Kbayt"], 2, null],
+["Rəng modelləri · PDF Güvən 2025", "RGB standartında (255, 255, 0) kodu hansı rəngi göstərir?", ["Firuzəyi","Bənövşəyi","Sarı","Yaşıl","Mavi"], 2, null],
+["Kodlaşdırma · PDF Güvən 2025", "Hər simvolu minimal 5 bitlə kodlaşdırılan əlifbada ən azı neçə simvol ola bilər ki, 5 bit tələb olunsun?", ["32","16","17","64","5"], 2, null],
+["Səs faylları · PDF Güvən 2025", "16000 Hz tezlikli, hər nümunəsi 8 bit olan 64 saniyəlik səs faylı təxminən neçə Kbayt yer tutur?", ["8000 Kbayt","1600 Kbayt","512 Kbayt","1000 Kbayt","2000 bit"], 3, null],
+["İnformasiya modelləri · PDF Güvən 2025", "Aşağıdakılardan hansı informasiya modelinin növü deyil?", ["Cədvəl","Sxem","Şəkil","Sözlə təsvir","Maket"], 4, null],
+["Say sistemləri · PDF Güvən 2025", "CCXC + LXVI Roma rəqəmləri cəminin səkkizlik say sistemində yazılışı hansıdır?", ["467₈","362₈","367₈","544₈","356₈"], 3, null]
+]);
+S['Riyaziyyat']=(S['Riyaziyyat']||[]).concat([
+["Faizlər · PDF MSİ-5", "20%-i ilə 15%-nin fərqi 12 olan ədədin 50%-ni tapın.", ["150","120","240","200","180"], 1, null],
+["Həndəsə · PDF MSİ-5", "Müstəvini kəsən parçanın ucları müstəvidən 4 sm və 7 sm məsafədədir. Parçanın orta nöqtəsinin müstəvidən məsafəsini tapın.", ["1,5 sm","3 sm","5,5 sm","7 sm","11 sm"], 0, null],
+["Kombinatorika · PDF MSİ-5", "A = {1, 3, 4, 5, 7, 8, 9} çoxluğunun elementlərindən rəqəmləri təkrarlanmayan neçə cüt üçrəqəmli ədəd yazmaq olar?", ["30","42","48","60","72"], 3, null]
+]);
+S['Fizika']=(S['Fizika']||[]).concat([
+["Maqnit sahəsi · PDF MSİ-5", "Sargacdan keçən maqnit seli 5 dəfə artarsa, maqnit sahəsinin enerjisi necə dəyişər?", ["5 dəfə azalar","5 dəfə artar","25 dəfə azalar","25 dəfə artar","Dəyişməz"], 3, null],
+["Maddənin halları · PDF MSİ-5", "Maye kristallaşarkən temperatur və daxili enerji necə dəyişir?", ["Temperatur artır, daxili enerji artır","Temperatur sabit qalır, daxili enerji azalır","Temperatur azalır, daxili enerji sabit qalır","Hər ikisi sabit qalır","Temperatur və daxili enerji artır"], 1, null]
+]);
+})();
+</script>
+
+
+<script id="v272-extra-questions">
+/* V27.2 — orijinal suallar (cavabları skriptlə yoxlanılıb) + təkrar sualların silinməsi. */
+(function(){
+S["İnformatika"]=(S["İnformatika"]||[]).concat([
+["Say sistemləri · Orijinal V27.2", "100101₂ ədədinin onluq say sistemindəki qiymətini tapın.", ["36", "41", "37", "35", "25"], 2, null],
+["Say sistemləri · Orijinal V27.2", "75 ədədinin ikilik say sistemində yazılışı hansıdır?", ["1001011", "1001101", "1010011", "1000111", "1101001"], 0, null],
+["Say sistemləri · Orijinal V27.2", "3E₁₆ ədədinin onluq say sistemindəki qiymətini tapın.", ["60", "64", "58", "48", "62"], 4, null],
+["Say sistemləri · Orijinal V27.2", "725₈ ədədinin ikilik say sistemində yazılışı hansıdır?", ["111100101", "111010101", "101010111", "110010101", "111010011"], 1, null],
+["Say sistemləri · Orijinal V27.2", "1101₂ + 1011₂ cəminin ikilik say sistemində yazılışı hansıdır?", ["10110", "11010", "10100", "11000", "11100"], 3, null],
+["Say sistemləri · Orijinal V27.2", "9C₁₆ ədədinin ikilik say sistemində yazılışı hansıdır?", ["10011010", "11001001", "10011100", "10010011", "10111100"], 2, null],
+["Kodlaşdırma · Orijinal V27.2", "Ölçüsü 1024×768 olan, hər pikseli 8 bitlə kodlaşdırılan şəkil faylı neçə Kbayt yer tutur? (1 Kbayt = 1024 Bayt)", ["6144 Kbayt", "768 Kbayt", "96 Kbayt", "1536 Kbayt", "384 Kbayt"], 1, null],
+["Kodlaşdırma · Orijinal V27.2", "2048 simvoldan ibarət mətnin hər simvolu 16 bitlə kodlaşdırılıb. Mətn neçə Kbayt yer tutur? (1 Kbayt = 1024 Bayt)", ["8 Kbayt", "2 Kbayt", "32 Kbayt", "16 Kbayt", "4 Kbayt"], 4, null],
+["Kodlaşdırma · Orijinal V27.2", "100 müxtəlif simvoldan ibarət əlifbanın hər simvolunu eyni uzunluqlu ikilik kodla yazmaq üçün minimum neçə bit lazımdır?", ["6", "8", "10", "7", "5"], 3, null],
+["Kodlaşdırma · Orijinal V27.2", "1 Mbayt neçə Kbitdir? (1 Mbayt = 1024 Kbayt)", ["8192 Kbit", "1024 Kbit", "8000 Kbit", "16384 Kbit", "4096 Kbit"], 0, null],
+["Səs faylları · Orijinal V27.2", "8192 Hz tezlikli, hər nümunəsi 16 bit olan 16 saniyəlik monofonik səs faylı neçə Kbayt yer tutur? (1 Kbayt = 1024 Bayt)", ["128 Kbayt", "512 Kbayt", "256 Kbayt", "4096 Kbayt", "2048 Kbayt"], 2, null],
+["Elektron cədvəl · Orijinal V27.2", "A1 xanasında 7, B1 xanasında 3 yazılıb. C1 xanasına =A1*B1-B1 düsturu yazılarsa, C1-də hansı qiymət alınar?", ["21", "18", "4", "15", "24"], 1, null],
+["Python · Orijinal V27.2", "Python kodunun nəticəsi necə olacaq?<br>a=[2,4,6,8]<br>print(a[1]+a[-1])", ["10", "14", "6", "16", "12"], 4, null],
+["Python · Orijinal V27.2", "Python kodunun nəticəsi necə olacaq?<br>s=0<br>for i in range(1,6):<br>&nbsp;&nbsp;&nbsp;&nbsp;s+=i*i<br>print(s)", ["55", "15", "30", "45", "25"], 0, null]
+]);
+S["Riyaziyyat"]=(S["Riyaziyyat"]||[]).concat([
+["Tənliklər · Orijinal V27.2", "3x − 7 = 20 tənliyini həll edin.", ["7", "10", "27", "9", "6"], 3, null],
+["Silsilələr · Orijinal V27.2", "Arifmetik silsilənin birinci həddi 5, fərqi 3-dür. Silsilənin 10-cu həddini tapın.", ["35", "32", "29", "30", "27"], 1, null],
+["Kvadrat tənliklər · Orijinal V27.2", "x² − 7x + 10 = 0 tənliyinin köklərinin kvadratları cəmini tapın.", ["49", "39", "21", "25", "29"], 4, null],
+["Faizlər · Orijinal V27.2", "40-ın 15%-ni tapın.", ["6", "4", "8", "60", "0,6"], 0, null],
+["Həndəsə · Orijinal V27.2", "Radiusu 7 sm olan çevrənin uzunluğunu tapın. (π ≈ 22/7)", ["22 sm", "154 sm", "44 sm", "49 sm", "14 sm"], 2, null],
+["Həndəsə · Orijinal V27.2", "Düzbucaqlı üçbucağın katetləri 9 sm və 12 sm-dir. Hipotenuzunu tapın.", ["21 sm", "14 sm", "13 sm", "15 sm", "16 sm"], 3, null],
+["Kombinatorika · Orijinal V27.2", "6 şagirddən 2 nəfərlik nümayəndə heyətini neçə üsulla seçmək olar?", ["12", "15", "30", "20", "10"], 1, null],
+["Ehtimal · Orijinal V27.2", "Qutuda 4 qırmızı və 6 mavi top var. Təsadüfi çəkilən topun qırmızı olması ehtimalı nəyə bərabərdir?", ["3/5", "1/4", "2/3", "1/2", "2/5"], 4, null],
+["Üstlü tənliklər · Orijinal V27.2", "3^(x+1) = 81 tənliyini həll edin.", ["3", "4", "2", "27", "5"], 0, null],
+["Statistika · Orijinal V27.2", "4, 7, 9, 12 və 8 ədədlərinin ədədi ortasını tapın.", ["7", "9", "8", "6", "10"], 2, null],
+["Həndəsə · Orijinal V27.2", "Paraleloqramın tərəfi 12 sm, bu tərəfə çəkilmiş hündürlüyü 5 sm-dir. Sahəsini tapın.", ["30 sm²", "17 sm²", "120 sm²", "60 sm²", "34 sm²"], 3, null],
+["Faizlər · Orijinal V27.2", "Ədədin 25%-i 18-dir. Həmin ədədi tapın.", ["4,5", "72", "45", "90", "54"], 1, null]
+]);
+S["Fizika"]=(S["Fizika"]||[]).concat([
+["Kinematika · Orijinal V27.2", "72 km/saat sürəti m/san ilə ifadə edin.", ["15 m/san", "25 m/san", "259,2 m/san", "12 m/san", "20 m/san"], 4, null],
+["Dinamika · Orijinal V27.2", "Kütləsi 4 kq olan cismə 20 N qüvvə təsir edir. Cismin təcilini tapın.", ["5 m/san²", "80 m/san²", "16 m/san²", "0,2 m/san²", "24 m/san²"], 0, null],
+["Elektrik · Orijinal V27.2", "Müqaviməti 4 Om olan naqilin ucları arasındakı gərginlik 12 V-dur. Naqildən keçən cərəyan şiddətini tapın.", ["48 A", "8 A", "3 A", "16 A", "0,33 A"], 2, null],
+["Enerji · Orijinal V27.2", "Kütləsi 2 kq olan cisim 6 m/san sürətlə hərəkət edir. Kinetik enerjisini tapın.", ["72 C", "36 C", "12 C", "24 C", "18 C"], 1, null],
+["Enerji · Orijinal V27.2", "Kütləsi 3 kq olan cisim 5 m hündürlükdədir. Potensial enerjisini tapın. (g = 10 m/san²)", ["15 C", "50 C", "30 C", "150 C", "1500 C"], 3, null],
+["Güc · Orijinal V27.2", "20 san ərzində 600 C iş görən qurğunun gücünü tapın.", ["12000 Vt", "580 Vt", "620 Vt", "3 Vt", "30 Vt"], 4, null],
+["Təzyiq · Orijinal V27.2", "Səthə perpendikulyar 200 N qüvvə 0,5 m² sahəyə təsir edir. Yaranan təzyiqi tapın.", ["400 Pa", "100 Pa", "40 Pa", "4000 Pa", "200 Pa"], 0, null],
+["İstilik · Orijinal V27.2", "Xüsusi istilik tutumu 4200 C/(kq·°C) olan 2 kq suyu 10 °C qızdırmaq üçün lazım olan istilik miqdarını tapın.", ["8,4 kC", "42 kC", "840 kC", "84 kC", "21 kC"], 3, null],
+["Elektrik · Orijinal V27.2", "Müqavimətləri 3 Om və 6 Om olan iki rezistor paralel qoşulub. Ümumi müqaviməti tapın.", ["9 Om", "2 Om", "4,5 Om", "18 Om", "1,5 Om"], 1, null],
+["Mexanika · Orijinal V27.2", "Cisim 45 m hündürlükdən sərbəst düşür. Düşmə müddətini tapın. (g = 10 m/san², hava müqaviməti nəzərə alınmır)", ["4 san", "4,5 san", "3 san", "9 san", "2 san"], 2, null]
+]);
+/* Eyni sual + eyni variantlar bir dəfə qalsın (yerində silinir) */
+Object.keys(S).forEach(function(k){var a=S[k],seen={};for(var i=0;i<a.length;i++){var r=a[i];if(!r||!r[2])continue;var key=r[1].trim()+'|'+r[2].map(String).slice().sort().join('||');if(seen[key]){a.splice(i,1);i--}else seen[key]=1}});
+})();
+</script>
+
 </body></html>
