@@ -1,5 +1,5 @@
-const V='buraxilis-v28-0',VER='V28.0';
-const FILES=['./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./s1.mp3','./s2.mp3','./b9.mp3'];
+const V='buraxilis-v28-2',VER='V28.2';
+const FILES=['./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
 // Quraşdırma: hər faylı ayrıca yüklə; çatışmayan fayl (məs. ikon) quraşdırmanı pozmasın
 self.addEventListener('install',e=>{e.waitUntil((async()=>{const c=await caches.open(V);
  await Promise.all(FILES.map(u=>fetch(new Request(u,{cache:'reload'})).then(r=>{if(r.ok)return c.put(u,r)}).catch(()=>{})));
@@ -10,8 +10,8 @@ self.addEventListener('message',e=>{if(e.data==='SKIP_WAITING')self.skipWaiting(
 self.addEventListener('fetch',e=>{const r=e.request,u=new URL(r.url);
  if(r.method!=='GET'||u.origin!==location.origin||u.pathname.endsWith('/version.json'))return;
  /* Açılış sürətli olsun: səhifə və audio əvvəlcə yaddaşdan verilir, yenisi arxa planda yüklənir */
- const isDoc=r.mode==='navigate'||u.pathname.endsWith('/index.html'),isAud=u.pathname.endsWith('.mp3');
- if(isDoc||isAud){e.respondWith((async()=>{const c=await caches.open(V);
+ const isDoc=r.mode==='navigate'||u.pathname.endsWith('/index.html');
+ if(isDoc){e.respondWith((async()=>{const c=await caches.open(V);
   const m=await c.match(r,{ignoreSearch:true})||(isDoc?await c.match('./index.html'):null);
   const net=fetch(r).then(res=>{if(res.ok&&res.status===200){try{c.put(r.mode==='navigate'?'./index.html':r,res.clone())}catch(_){}}return res});
   net.catch(()=>{});
