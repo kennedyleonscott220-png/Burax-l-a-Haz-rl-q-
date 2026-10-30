@@ -496,7 +496,7 @@ function boost(){
  const weak=Object.entries(MS).filter(([k,v])=>Array.isArray(v)&&v[1]>=2).sort((a,b)=>(a[1][0]/Math.max(1,a[1][1]))-(b[1][0]/Math.max(1,b[1][1]))).slice(0,6);
  const streak=(()=>{let n=0;for(let i=0;i<366;i++){let d=new Date(Date.now()-i*864e5).toISOString().slice(0,10);if((G.d[d]||0)>=G.g)n++;else if(i>0)break}return n})();
  const xp=Math.max(0,H.reduce((a,x)=>a+Math.max(0,Math.round(10*(x.t||0)/Math.max(1,x.m||1))),0)+Object.values(G.d||{}).reduce((a,n)=>a+n,0));
- A.innerHTML=`<div class="top"><button onclick="home()">← Geri</button><span class="sp"></span><span class="m">V28.3</span></div><h1>🚀 Ağıllı hazırlıq</h1><p class="m">Nəticələrinə əsaslanan təkrar planı və imtahan alətləri.</p>
+ A.innerHTML=`<div class="top"><button onclick="home()">← Geri</button><span class="sp"></span><span class="m">V28.4</span></div><h1>🚀 Ağıllı hazırlıq</h1><p class="m">Nəticələrinə əsaslanan təkrar planı və imtahan alətləri.</p>
  <div class="card hero"><b>🏆 Öyrənmə göstəricilərin</b><div class="stats-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px"><div class="card"><div class="m">Təxmini XP</div><div style="font-size:25px;font-weight:850">${xp}</div></div><div class="card"><div class="m">Ardıcıl hədəf günləri</div><div style="font-size:25px;font-weight:850">${streak} 🔥</div></div><div class="card"><div class="m">Bu gün cavablanan</div><div style="font-size:25px;font-weight:850">${done}</div></div><div class="card"><div class="m">Toplanmış səhvlər</div><div style="font-size:25px;font-weight:850">${W.length}</div></div></div><p class="m">XP motivasiya göstəricisidir; rəsmi imtahan balı deyil.</p></div>
  <h2>🗓️ Bu gün üçün hazırlıq planı</h2><div class="card"><p class="m">Qısa və davamlı hazırlaş: əvvəl səhvlərini təkrar et, sonra zəif mövzudan mini-test həll et, sonda nəticəni yoxla.</p><div class="meter"><i style="width:${Math.min(100,Math.round(100*done/Math.max(1,G.g)))}%"></i></div><p><b>${Math.max(0,G.g-done)}</b> sual qalıb gündəlik hədəfə.</p><button class="p" ${W.length?'':'disabled'} onclick="startX(wrongList())">1 · Səhvləri təkrar et</button><button onclick="tab('prac')">2 · Mövzu mini-testi</button><button onclick="tab('stat')">3 · Nəticələri yoxla</button></div>
  <h2>🎯 Zəif mövzular</h2><div class="card">${weak.length?weak.map(([k,v])=>`<div style="margin:10px 0"><b>${k.replace('|',' · ')}</b><div class="meter"><i style="width:${Math.min(100,Math.round(100*(v[0]||0)/Math.max(1,v[1]||1)))}%"></i></div><span class="m">${v[0]||0} düzgün / ${v[1]||0} cəhd</span></div>`).join(''):'<p class="m">Mövzular üzrə daha dəqiq təhlil üçün bir neçə məşq tamamla.</p>'}${Object.keys(topics).length?'<hr><b>Səhvlərin mövzu xəritəsi</b>'+Object.entries(topics).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,n])=>`<p style="margin:8px 0">${k}: <b class="no">${n} səhv</b></p>`).join(''):''}<button class="p" ${weak.length?'':'disabled'} onclick="weak()">Zəif mövzulardan test</button> <button ${W.length?'':'disabled'} onclick="startX(wrongList())">Səhvləri təkrar et</button></div>
@@ -1297,7 +1297,7 @@ window.vocHome=function(){_vh.apply(this,arguments);try{
 })()}catch(e){console.warn(e)}
 
 /* PWA */
-var APP_VER='V28.3';
+var APP_VER='V28.4';
 try{if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0){
 const ru=()=>document.documentElement.lang=='ru',T=(a,r)=>ru()?r:a;
 const vnum=v=>{const m=/(\d+)\.(\d+)/.exec(v||'');return m?(+m[1])*1000+(+m[2]):0};
